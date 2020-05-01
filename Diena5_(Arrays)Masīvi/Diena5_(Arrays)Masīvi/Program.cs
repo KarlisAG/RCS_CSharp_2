@@ -39,12 +39,17 @@ namespace Diena5__Arrays_Masīvi
             int[] mas = new int[5];
             int summa = 0;
             Console.WriteLine("Lūdzu, ierakstiet 5 dažādus veselus ciparus!");
-            mas[0] = Pārveidošana();
+            for (int i = 0; i < 5; i++)
+            {
+                mas[i] = Pārveidošana();
+            }
+
+            /*mas[0] = Pārveidošana();
             mas[1] = Pārveidošana();
             mas[2] = Pārveidošana();
             mas[3] = Pārveidošana();
             mas[4] = Pārveidošana();
-
+            */
             for (int i = 0; i < 5; i++)
             {
                 summa = summa + mas[i];
