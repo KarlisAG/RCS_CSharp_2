@@ -8,7 +8,9 @@ namespace Diena5__Arrays_Masīvi
         {
             //ArrayTask1();
             //ArraySample();
-            Task2();
+            //Task2();
+            //Task3();
+            PasniedzejaTask3();
         }
 
         static void ArraySample() //primitīvākā datu struktūra
@@ -87,7 +89,7 @@ namespace Diena5__Arrays_Masīvi
 
         static void Task2()
         {
-            int[] a = {1,6,7,12,14,9};
+            int[] a = { 1, 6, 7, 12, 14, 9 };
             int sum = 0;
             for (int i = 0; i < a.Length; i++)
             {
@@ -96,6 +98,64 @@ namespace Diena5__Arrays_Masīvi
             int vidējais = sum / a.Length;
             Console.WriteLine("Masīvu ciparu vidējā vērtība ir " + vidējais);
         }
+
+        static void Task3()
+        {
+            int[] mas = new int[10];
+            Random rnd = new Random();
+            int randomC;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                mas[i] = rnd.Next(1, 10);
+                Console.WriteLine(mas[i]);
+            }
+
+            Console.WriteLine("Ievadiet skaitli, kuru Jūs vēlaties atrast!");
+            String ievade = Console.ReadLine();
+            int ievadeC = Convert.ToInt32(ievade);
+        }
+
+        static void PasniedzejaTask3()
+        {
+            int[] mas = new int[10];
+            Random random = new Random();
+            bool nav;
+            int cits = 0;
+
+            for(int i = 0; i < 10; i++)
+            {
+                mas[i] = random.Next(1, 11);
+                Console.Write(mas[i] + " ");
+            }
+            Console.WriteLine("Ievadiet skaitli, ko meklēt");
+            int sk = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < 10; i++)
+            {
+                if(sk == mas[i])
+                {
+                    if(i == 1)
+                    {
+                        Console.WriteLine("Indeksi: ");
+                    }
+                    Console.Write (i + " ");
+                }
+                else
+                {
+                    cits++;
+                }
+                if (cits == 10)
+                {
+                    Console.Write("Jūsu ievadītais cipars nav atrodams masīvā!");
+                }
+                
+            }
+
+            
+
+        }
     }
+
+
+
 
 }
