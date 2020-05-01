@@ -119,13 +119,11 @@ namespace Diena5__Arrays_Masīvi
         {
             int[] mas = new int[10];
             Random random = new Random();
-            bool ir;
             int cits = 0;
-
             for (int i = 0; i < 10; i++)
             {
                 mas[i] = random.Next(1, 11);
-                Console.Write(mas[i] + " ");
+                //Console.Write(mas[i] + " ");
             }
             Console.WriteLine("Ievadiet skaitli, ko meklēt");
             int sk = Convert.ToInt32(Console.ReadLine());
@@ -133,11 +131,7 @@ namespace Diena5__Arrays_Masīvi
             {
                 if (sk == mas[i])
                 {
-                    if (i == 1)
-                    {
-                        Console.WriteLine("Indeksi: ");
-                    }
-                    Console.Write(i + " ");
+                    Console.WriteLine("Indekss " + i);
                 }
                 else
                 {
@@ -147,11 +141,8 @@ namespace Diena5__Arrays_Masīvi
                 {
                     Console.Write("Jūsu ievadītais cipars nav atrodams masīvā!");
                 }
-
-
-
-
             }
+
         }
 
 
