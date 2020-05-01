@@ -6,8 +6,9 @@ namespace Diena5__Arrays_Masīvi
     {
         static void Main(string[] args)
         {
-            ArrayTask1();
+            //ArrayTask1();
             //ArraySample();
+            Task2();
         }
 
         static void ArraySample() //primitīvākā datu struktūra
@@ -43,8 +44,9 @@ namespace Diena5__Arrays_Masīvi
             {
                 mas[i] = Pārveidošana();
             }
-
-            /*mas[0] = Pārveidošana();
+            //a.Length // length ņem visu masīva garumu -- a ir masīva nosaukums
+            /*
+            mas[0] = Pārveidošana();
             mas[1] = Pārveidošana();
             mas[2] = Pārveidošana();
             mas[3] = Pārveidošana();
@@ -64,6 +66,35 @@ namespace Diena5__Arrays_Masīvi
             String ievade1 = Console.ReadLine();
             int ievade1C = Convert.ToInt32(ievade1);
             return ievade1C;
+        }
+
+        static void PasniedzējaTask1()
+        {
+            int[] a = new int[5];
+            int sum = 0;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                Console.WriteLine("Ievadiet skaitli!");
+                a[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                sum = sum + a[i];
+            }
+        }
+
+        static void Task2()
+        {
+            int[] a = {1,6,7,12,14,9};
+            int sum = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                sum = sum + a[i];
+            }
+            int vidējais = sum / a.Length;
+            Console.WriteLine("Masīvu ciparu vidējā vērtība ir " + vidējais);
         }
     }
 
