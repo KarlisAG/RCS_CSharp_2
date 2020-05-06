@@ -9,7 +9,10 @@ namespace Diena6__Classes_Klases
             Example.Test(); //sākumā klases nos. un tad metodes nos; no kurienes ko sauc -> tas ir ja metode ir statiska
             int a = Example.ReturnPublic();
             Console.WriteLine(a);
+
             Example.ParamPublic(4, 6);
+
+            Example.b = 8;
         }
 
 
