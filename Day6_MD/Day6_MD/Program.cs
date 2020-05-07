@@ -7,12 +7,54 @@ namespace Day6_MD
         static void Main(string[] args)
         {
             Task1();
+            Console.WriteLine();
+            Task2();
         }
 
         static void Task1()
         {
             Students.Studenti();
             Students.print();
+        }
+
+        static void Task2()
+        {
+            bool turpinājums = true;
+            Console.WriteLine("Sveiki! Šis ir mazais kalkulators! Lai ar to darbotos Jums vajag atsevišķi ievadīt vienu skaitli, tad ievadīt kādu darbību Jūs vēlaties ( +, -, * vai / ) un trešajā reizē ievadiet otro ciparu!"); ;
+
+            do
+            {
+                Console.WriteLine("1. ievade (pirmais skaitlis)");
+                double ievadeC1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("2. ievade (darbība ( +, -, *, / ))");
+                String darbība = Console.ReadLine();
+                Console.WriteLine("3. ievade (otrais skaitlis)");
+                double ievadeC2 = Convert.ToDouble(Console.ReadLine());
+
+                switch (darbība)
+                {
+                    case "+":
+                        Console.WriteLine("Rezultāts ir " + Kalkulators.Saskaitīšana(ievadeC1, ievadeC2));
+                        break;
+                    case "-":
+                        Console.WriteLine("Rezultāts ir " + Kalkulators.Atņemšana(ievadeC1, ievadeC2));
+                        break;
+                    case "*":
+                        Console.WriteLine("Rezultāts ir " + Kalkulators.Reizināšana(ievadeC1, ievadeC2));
+                        break;
+                    case "/":
+                        Console.WriteLine("Rezultāts ir " + Kalkulators.Dalīšana(ievadeC1, ievadeC2));
+                        break;
+                }
+                Console.WriteLine("Vai vēlaties turpināt (lai turpinātu, ievadiet pilnīgi jebko)? Ja gribat šo procesu apstādināt ierakstiet STOP");
+                String ievadeStop = "STOP";
+                if (ievadeStop == Console.ReadLine())
+                {
+                    turpinājums = false;
+                }
+                Console.WriteLine();
+            } while (turpinājums == true);
+
         }
     }
 }
