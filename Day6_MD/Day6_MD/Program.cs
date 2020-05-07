@@ -6,6 +6,11 @@ namespace Day6_MD
     {
         static void Main(string[] args)
         {
+            Task1();
+        }
+
+        static void Task1()
+        {
             Students.Studenti();
             Students.print();
         }

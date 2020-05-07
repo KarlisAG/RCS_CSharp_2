@@ -50,7 +50,9 @@ namespace Day6_MD
 
         public static void print()
         {
-            Console.WriteLine("Jūsu vārds ir " + getVārds() + " un uzvārds ir " + getUzvārds() + ", un Jūs esat izvēlējušies " + getKurss() + ". kursu!");
+            Console.WriteLine("Studenta vārds: " + getVārds());
+            Console.WriteLine("Uzvārds: " + getUzvārds());
+            Console.WriteLine("Kurss: " + getKurss());
         }
     }
     
