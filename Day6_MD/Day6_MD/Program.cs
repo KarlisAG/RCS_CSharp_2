@@ -6,9 +6,28 @@ namespace Day6_MD
     {
         static void Main(string[] args)
         {
-            Task1();
-            Console.WriteLine();
-            Task2();
+            //Task1();
+            //Console.WriteLine();
+            //Task2();
+            Console.WriteLine("Ievadiet vārdu!");
+            PasniedzējaStudent.setName(Console.ReadLine());
+
+            Console.WriteLine("ievadiet uzvārdu!");
+            PasniedzējaStudent.setSurname(Console.ReadLine());
+
+            Console.WriteLine("Ievadiet kursu!");
+            try
+            {
+                PasniedzējaStudent.setCourse(Convert.ToInt32(Console.ReadLine()));
+            }
+            catch
+            {
+                Console.WriteLine("Nepareiza ievade");
+                return;
+            }
+
+            PasniedzējaStudent.print();
+            
         }
 
         static void Task1()
