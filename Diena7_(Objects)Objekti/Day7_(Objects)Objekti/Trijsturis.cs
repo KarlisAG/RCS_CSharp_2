@@ -19,6 +19,11 @@ namespace Day7__Objects_Objekti
             this.mala3 = mala3;//ar this saprot, ka ir jāizmanto lauks, ne lokālā vērtība
         }
 
+        public Trijsturis(int mala1, int mala2)//overloading, tas pats konstruktors, bet citi parametri
+        {
+            this.mala1 = mala1;
+            this.mala2 = mala2;
+        }
         public void Print()
         {
             Console.WriteLine(mala1 + " " + mala2 + " " + mala3);

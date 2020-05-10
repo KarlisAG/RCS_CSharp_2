@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Day7__Objects_Objekti
 {
@@ -21,6 +22,35 @@ namespace Day7__Objects_Objekti
 
             Students st2 = new Students("Marija", "Soldatenko", 1);
             st2.Print();
+
+            Students[] students = new Students[5];//katrā tad var 1 objektu; objekti klasē..?
+            students[0] = new Students("Jānis", "Bērziņš", 3);
+
+
+            List<Students> st = new List<Students>();//ja ir runa par objektiem, tad list ir daudz labāks
+                                                     //ja uztaisa for ciklu uz i, ja arrayiem nav viss aizpildīs, tad crash
+                                                     //listi nekrashos, garums pielāgosies; un var vienkārši add pie listes un būs ok
+
+
+            Shape daudzstūris1 = new Shape(Input(), Input(), Input(), Input(), Input());
+            Shape daudzstūris = new Shape(3,4,5, 6);
+            daudzstūris1.Print();
+            daudzstūris1.Perimeter();
+
+        }
+
+        static int Input()
+        {
+            try
+            {
+                int ievade = Convert.ToInt32(Console.ReadLine());
+                return ievade;
+            }
+            catch 
+            {
+                return 0;
+            }
+
         }
     }
 }
