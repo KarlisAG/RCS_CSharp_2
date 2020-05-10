@@ -6,6 +6,7 @@ namespace Day7__Objects_Objekti
     {
         static void Main(string[] args)
         {
+            //ja ir static - tad objektu nelieto; statiskai vērtībai nevir piešķirt, to aks ir apredzēts objektam
             //statiskas metodes taisa, tad kad netaisa objektu??
             Trijsturis tr1 = new Trijsturis(1, 2, 3);//metodei jeb konstruktoram vajag tad uzreiz parametrus
             tr1.Print();//ja nav statiskas metodes, tad rakstot klasi un metodes, tad neko nevar izsaukt jeb Trijsturi. .. neder!
