@@ -9,8 +9,53 @@ namespace Day7__Objects_Objekti
         {
             //IzvadeObject2();
             //Shape daudzstūris = new Shape(3,4,5, 6);
-            PasniedzējaTask2();
-            
+            //PasniedzējaTask2();
+            //List();
+            ListTask1();
+        }
+
+        static void ListTask1()
+        {
+            List<String> list = new List<String>();
+            Console.WriteLine("Ievadiet dažādas simbolu virknes, kad izvēlaties beigt, tad ievadiet STOP");
+            bool ievadeSTOP = false;
+            do
+            {
+                String ievade = Console.ReadLine();
+                if (ievade == "STOP")
+                {
+                    ievadeSTOP = true;
+                }
+                else
+                {
+                    list.Add(ievade);
+                }
+            } while (ievadeSTOP == false);
+
+            Console.WriteLine("Jūs ievadījāt: ");
+            foreach(String a in list)
+            {
+                Console.WriteLine(a);
+            }
+        }
+
+        static void List()
+        {
+            List<String> a = new List<String>();
+            a.Add("aa");
+            a.Add("bb");
+            //a.RemoveAt(0);//ja izņem indx 1, tad jaunais garums ir 0; ja izdzēs 0 indx, tad jaunais 0 ir bb; nepalied tukšums, garums adaptējas
+
+            for(int i = 0; i < a.Count; i++)
+            {
+
+            }
+
+            foreach(String b in a)//nodefinē ele. tipu, kāds ir saraksts; un tas ir kā atsevišķs mainīgais -> b; in = kam mēs ejam cauri; iet cauri visam sarakstam un katrā iterācijā saglabājās vērtība iekš b
+            {
+                Console.WriteLine(b);
+            }
+
         }
 
         static void NodarbībasSākums()
