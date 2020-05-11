@@ -37,6 +37,7 @@ namespace Day7__Objects_Objekti
                 String ievade = Console.ReadLine();
                 if (ievade == "1")
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Dotā brīža saraksts: ");
                     foreach (int a in l)
                     {
@@ -46,6 +47,7 @@ namespace Day7__Objects_Objekti
                 }
                 else if (ievade == "2")
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Ievadiet, kāda indeksa skaitli Jūs vēlaties izdzēst");
                     
                     try
@@ -55,11 +57,13 @@ namespace Day7__Objects_Objekti
                     }
                     catch(ArgumentOutOfRangeException)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Norādītais indekss sarakstā nav pieejams!");
                     }
                 }
                 else if(ievade == "3")
                 {
+                    Console.WriteLine("Paldies, ka lietojā šo programmu!");
                     break;
                 }
                 else
@@ -70,8 +74,20 @@ namespace Day7__Objects_Objekti
 
                 if(l.Count == 0)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Saraksts ir tukšs!");
-                    break;
+                    Console.WriteLine("Vai vēlaties programmu sākt no jauna? Ja vēlaties, tad uzrakstiet Y");
+                    String ievadeBeigt = Console.ReadLine();
+                    ievadeBeigt.ToLower();
+                    if(ievadeBeigt == "y")
+                    {
+                        Lists2();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Paldies, ka lietojā šo programmu!");
+                        break;
+                    }
                 }
             }
         }
