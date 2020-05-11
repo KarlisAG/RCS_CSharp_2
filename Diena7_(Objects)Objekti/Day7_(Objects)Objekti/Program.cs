@@ -31,11 +31,11 @@ namespace Day7__Objects_Objekti
                                                      //ja uztaisa for ciklu uz i, ja arrayiem nav viss aizpildīs, tad crash
                                                      //listi nekrashos, garums pielāgosies; un var vienkārši add pie listes un būs ok
 
-
-            Shape daudzstūris1 = new Shape(Input(), Input(), Input(), Input(), Input());
+            Console.WriteLine("Lūdzu, ievadiet sava daudzstūra vēlamo malu garumus! Jums ir jāievada 3-5 dažādi cipari. Ja gribat tikai trīsstūri vai četrstūri, tad ievadiet tik dažādu malu garumus un pārējās ievadēs (kopā 5) ievadet jebkuru citu simbolu, atskaitot ciparus!");
+            Shape daudzstūrisArIevadi = new Shape(Input(), Input(), Input(), Input(), Input());
             Shape daudzstūris = new Shape(3,4,5, 6);
-            daudzstūris1.Print();
-            daudzstūris1.Perimeter();
+            daudzstūrisArIevadi.Print();
+            daudzstūrisArIevadi.Perimeter();
 
         }
 
@@ -43,6 +43,7 @@ namespace Day7__Objects_Objekti
         {
             try
             {
+                
                 int ievade = Convert.ToInt32(Console.ReadLine());
                 return ievade;
             }
