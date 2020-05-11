@@ -64,7 +64,7 @@ namespace Day7__Objects_Objekti
 
         static void PasniedzējaTask2()
         {
-            Console.WriteLine("Kādu figūru vēlaties?");
+            Console.WriteLine("Kādu figūru vēlaties?");//ar cilvēka ievadi
             int choice = Convert.ToInt32(Console.ReadLine());
 
             PasniedzējaShape sh;
