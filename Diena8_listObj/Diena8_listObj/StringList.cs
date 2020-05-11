@@ -94,5 +94,24 @@ namespace Diena8_listObj
             }
 
         }
+
+        private void PasniedzējaDelete()
+        {
+            for (int i = 0; i < listOfValues.Count; i++)
+            {
+                Console.WriteLine(i + " - " + listOfValues[i]);//parāda kurā indeksā ir kāds elements
+            }
+            Console.WriteLine("Kādu indeksu vēlaties izdzēst?");
+            try
+            {
+                int choice = Convert.ToInt32(Console.ReadLine());
+                listOfValues.RemoveAt(choice);
+            }
+            catch
+            {
+                Console.WriteLine("Nepareiza ievade!");
+            }
+
+        }
     }
 }
