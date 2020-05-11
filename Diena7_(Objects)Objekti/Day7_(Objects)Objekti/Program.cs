@@ -13,8 +13,8 @@ namespace Day7__Objects_Objekti
             //List();
             //ListTask1();
             //PasniedzējaList();
-            //Lists2();
-            PasniedzējaList2();
+            Lists2();
+            //PasniedzējaList2();
         }
 
         static void PasniedzējaList2()
