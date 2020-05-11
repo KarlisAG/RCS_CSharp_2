@@ -11,9 +11,78 @@ namespace Day7__Objects_Objekti
             //Shape daudzstūris = new Shape(3,4,5, 6);
             //PasniedzējaTask2();
             //List();
-            ListTask1();
+            //ListTask1();
+            //PasniedzējaList();
+            Lists2();
         }
 
+        static void Lists2()
+        {
+            List<int> l = new List<int>();
+            Random random = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                l.Add(random.Next(51));
+
+            }
+            
+            while (true)
+            {
+                Console.WriteLine("Sveiki! Ko Jūs vēlaties izdarīt?");
+                Console.WriteLine("Uzspiežot 1 - izvadīt sarakstu");
+                Console.WriteLine("Uzspiežot 2 - izdzēst kādu elementu no saraksta pēc indeksa");
+                Console.WriteLine("Uzspiežot 3 - iziet no šīs programmas");
+
+                String ievade = Console.ReadLine();
+                if (ievade == "1")
+                {
+                    Console.WriteLine("Dotā brīža saraksts: ");
+                    foreach (var a in l)
+                    {
+                        Console.WriteLine(a);
+                    }
+
+                }
+                else if (ievade == "2")
+                {
+                    Console.WriteLine("Ievadiet, kāda indeksa skaitli Jūs vēlaties izdzēst");
+                    int remove = Convert.ToInt32(Console.ReadLine());
+                    l.RemoveAt(remove);
+                }
+                else if(ievade == "3")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Jūs esat ievadījuši nepareizu simbolu, lūdzu, ievadiet no 1 līdz 3!");
+                }
+            }
+        }
+
+        static void PasniedzējaList()
+        {
+            List<String> a = new List<String>();
+
+            while (true)
+            {
+                Console.WriteLine("Ievadiet elemtu");
+                a.Add(Console.ReadLine());
+
+                Console.WriteLine("Vai turpināt?");
+                String choice = Console.ReadLine();
+
+                if (choice == "n")
+                {
+                    break;
+                }
+            }
+
+            foreach(String str in a)
+            {
+                Console.WriteLine(str);
+            }
+        }
         static void ListTask1()
         {
             List<String> list = new List<String>();
