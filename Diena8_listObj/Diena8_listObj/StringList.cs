@@ -28,6 +28,7 @@ namespace Diena8_listObj
                 Console.WriteLine("1 - izvadīt sarakstu");
                 Console.WriteLine("2 - pievienot ievadi sarakstam");
                 Console.WriteLine("3 - dzēst kādu vērtību ierakstītajā indeksā");
+                Console.WriteLine("4 - meklēt konkrētu lietu sarakstā");
                 Console.WriteLine("0 - apturēt programmu!");
 
                 izvēle = Console.ReadLine();
@@ -44,6 +45,9 @@ namespace Diena8_listObj
                         Delete();
                         break;
                     case "0":
+                        break;
+                    case "4":
+                        Search();
                         break;
                     default:
                         Console.WriteLine("Nepareiza ievade!");
@@ -112,6 +116,20 @@ namespace Diena8_listObj
                 Console.WriteLine("Nepareiza ievade!");
             }
 
+        }
+
+        private void Search()
+        {
+            Console.WriteLine("Ievadiet ko Jus velaties atrast");
+            String search = Console.ReadLine();
+            if (listOfValues.Contains(search))
+            {
+                Console.WriteLine("Meklejama elemeta indekss ir: " + listOfValues.IndexOf(search));
+            }
+            else
+            {
+                Console.WriteLine("Tads elements saraksta nav!");
+            }
         }
     }
 }
