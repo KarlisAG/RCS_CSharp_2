@@ -28,16 +28,17 @@ namespace Day7__Objects_Objekti
             
             while (true)
             {
+                Console.WriteLine();
                 Console.WriteLine("Sveiki! Ko Jūs vēlaties izdarīt?");
                 Console.WriteLine("Uzspiežot 1 - izvadīt sarakstu");
                 Console.WriteLine("Uzspiežot 2 - izdzēst kādu elementu no saraksta pēc indeksa");
                 Console.WriteLine("Uzspiežot 3 - iziet no šīs programmas");
-
+                
                 String ievade = Console.ReadLine();
                 if (ievade == "1")
                 {
                     Console.WriteLine("Dotā brīža saraksts: ");
-                    foreach (var a in l)
+                    foreach (int a in l)
                     {
                         Console.WriteLine(a);
                     }
@@ -46,8 +47,16 @@ namespace Day7__Objects_Objekti
                 else if (ievade == "2")
                 {
                     Console.WriteLine("Ievadiet, kāda indeksa skaitli Jūs vēlaties izdzēst");
-                    int remove = Convert.ToInt32(Console.ReadLine());
-                    l.RemoveAt(remove);
+                    
+                    try
+                    {
+                        int remove = Convert.ToInt32(Console.ReadLine());
+                        l.RemoveAt(remove);
+                    }
+                    catch(ArgumentOutOfRangeException)
+                    {
+                        Console.WriteLine("Norādītais indekss sarakstā nav pieejams!");
+                    }
                 }
                 else if(ievade == "3")
                 {
@@ -56,6 +65,13 @@ namespace Day7__Objects_Objekti
                 else
                 {
                     Console.WriteLine("Jūs esat ievadījuši nepareizu simbolu, lūdzu, ievadiet no 1 līdz 3!");
+                    Console.WriteLine();
+                }
+
+                if(l.Count == 0)
+                {
+                    Console.WriteLine("Saraksts ir tukšs!");
+                    break;
                 }
             }
         }
