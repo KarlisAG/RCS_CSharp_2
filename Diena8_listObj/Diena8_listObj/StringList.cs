@@ -10,7 +10,8 @@ namespace Diena8_listObj
 
         public StringList()
         {
-            listOfValues = new List<String>();
+            listOfValues = new List<String>() {"aa", "bb"};//šādi uzrei ieliek vērtības
+            //() parāda, ka tā ir metode
         }
 
         public void Task1()
@@ -47,7 +48,7 @@ namespace Diena8_listObj
                     case "0":
                         break;
                     case "4":
-                        Search();
+                        PasniedzejaSearch();
                         break;
                     default:
                         Console.WriteLine("Nepareiza ievade!");
@@ -122,13 +123,46 @@ namespace Diena8_listObj
         {
             Console.WriteLine("Ievadiet ko Jus velaties atrast");
             String search = Console.ReadLine();
-            if (listOfValues.Contains(search))
+            for (int i = 0; i < listOfValues.Count; i++)
             {
-                Console.WriteLine("Meklejama elemeta indekss ir: " + listOfValues.IndexOf(search));
+                if (listOfValues.Contains(search))
+                {
+                    Console.WriteLine("Jusu elements atrodas indeksa: " + listOfValues.IndexOf(search));
+
+                }
+                else
+                {
+                    Console.WriteLine("Tads elements saraksta nav!");
+                }
             }
-            else
+        }
+
+        private void PasniedzejaSearch()
+        {
+            Console.WriteLine("Ievadiet meklejamo frazi!");
+            String toSearch = Console.ReadLine();
+            Console.WriteLine("Mekletais atrodas: ");
+
+            bool found = false;
+
+            for (int i = 0; i < listOfValues.Count; i++)
             {
-                Console.WriteLine("Tads elements saraksta nav!");
+                String el = listOfValues[i].ToUpper();//lai atrastu, ja ir miksēti lielie un mazie
+                if (listOfValues[i].Contains(toSearch))
+                {
+                    Console.Write(i + ", ");
+                    found = true;
+                }
+                //if (el.Contains(toSearch.ToUpper())
+                //{
+                //    Console.Write(i + ", ");
+                //    found = true;
+                //}
+            }
+
+            if (!found)//!found - found = false
+            {
+                Console.WriteLine("Saraksts ir tukss");
             }
         }
     }
