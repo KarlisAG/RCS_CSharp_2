@@ -8,9 +8,6 @@ namespace Diena_9_MoreLists
         static void Main(string[] args)
         {
             Example1();
-            
-
-            
         }
 
         static void Sample()
