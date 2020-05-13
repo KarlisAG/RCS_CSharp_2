@@ -10,29 +10,59 @@ namespace Day_8_MD
         {
             List<int> list1 = new List<int>() { 1, 2, 3, 4, 5};
             List<int> list2 = new List<int>() { 1, 2, 3, 4, 5, 6};
-            List<int> list3 = new List<int>() { 1, 2, 3, 4, 5};
+            List<int> list3 = new List<int>() { 1, 2, 3, 4, 6};
+            List<int> list4 = new List<int>() { 1, 2, 3, 4, 5};
+            List<String> list5 = new List<String>() { "aa", "bb", "cc", "dd" };
+            List<String> list6 = new List<String>() { "aa", "bb", "cc", "dd", "ee" };
+            List<String> list7 = new List<String>() { "aa", "bb", "c", "dd" };
+            List<String> list8 = new List<String>() { "aa", "bb", "cc", "dd" };
 
-            Console.WriteLine(Check(list1, list2));
+            //Console.WriteLine(Check(list1, list4));
+            Console.WriteLine(Check2(list5, list8));
             ArraySwap();
         }
 
-        public static bool Check(List<int> a, List<int> b)
+        public static bool Check(List<int> a, List<int> b)//internetā atrastā atbilde
         {
-            //if (a == b)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
             return a.SequenceEqual(b);
+        }
+        public static bool Check2(List<String> a, List<String> b)//mans izdomātais variants, kuram vajadzētu strādāt
+        {
+            bool isEqual;
+            List<bool> isSame = new List<bool>();
+            if (a.Count == b.Count)
+            {
+                for(int i = 0; i < a.Count; i++)
+                {
+                    isEqual = a[i] == b[i];
+                    isSame.Add(isEqual);
+                }
+                //foreach (bool t in isSame)
+                //{
+                //    Console.WriteLine(t);
+                //}
+
+                if (isSame.Contains(false))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public static void ArraySwap()
         {
             int[] array1 = new int[5];
             int[] array2 = new int[5];
+            Console.WriteLine();
             Console.WriteLine("Ievadiet 5 veselus skaitlus!");
             for (int i = 0; i < 5; i++)
             {
