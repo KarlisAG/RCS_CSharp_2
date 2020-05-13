@@ -38,7 +38,7 @@ namespace Day_8_MD
 
             for(int i = 0; i < a.Length; i++)
             {
-                b[i] = a[a.Length - 1 - i];
+                b[i] = a[a.Length - 1 - i];//universals risinajums, ja ir garaka versija
 
                 Console.Write(b[i] + " ");
             }
