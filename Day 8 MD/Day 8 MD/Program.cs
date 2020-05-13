@@ -20,6 +20,24 @@ namespace Day_8_MD
             //Console.WriteLine(Check(list1, list4));
             Console.WriteLine(Check2(list5, list8));
             ArraySwap();
+
+
+
+            Tasks t = new Tasks();//pasniedzeja MD variants
+            List<int> a = new List<int>();
+            for(int i = 0; i < 5; i++)
+            {
+                a.Add(i);
+            }
+            List<int> b = new List<int>();
+            for (int i = 0; i < 5; i++)
+            {
+                b.Add(i);
+            }
+
+            t.ReverseArray();
+            
+            Console.WriteLine(t.CompareLists(a, b));
         }
 
         public static bool Check(List<int> a, List<int> b)//internetā atrastā atbilde
