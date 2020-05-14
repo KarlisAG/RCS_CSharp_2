@@ -7,9 +7,9 @@ namespace Day9_MD
     {
         static void Main(string[] args)
         {
-            
-            car.Menu();
-            Car.Menu();
+            Car c = new Car();
+            c.Start();
+
         }
     }
 }
