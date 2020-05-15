@@ -7,9 +7,9 @@ namespace Day9_MD
 {
     class Car
     {
-        private String color { get; set; }
-        private String brand { get; set; }
-        private int doors { get; set; }
+        private String color;
+        private String brand;
+        private int doors;
         private List<Car> car = new List<Car>();
 
         public Car(String color, String brand, int doors)
@@ -21,21 +21,22 @@ namespace Day9_MD
 
         public Car()
         {
-
+            //so uztaisiju jo savadak nemaceju uztaisit objektu, kas saktu sis klases darbibu, ka to vareja izdarit?
         }
 
         public void Start()
         {
             Console.WriteLine("Sveiki! Ievadiet, ludzu, 5 dazadus auto parametrus");
-            //AddCar(5);
+            AddCar(5);
             Menu();
         }
         public void Menu()
         {
             String choice = "";
-
+            //int times = 0;
             while (choice != "0")
             {
+                Console.WriteLine();
                 Console.WriteLine("Vai Jus velaties: ");
                 Console.WriteLine("1 - apskatit auto sarakstu");
                 Console.WriteLine("2 - pievienot auto sarakstam");
@@ -47,8 +48,11 @@ namespace Day9_MD
                     case "1":
                         foreach (Car c in car)
                         {
-                            c.Print();
+                            c.Print();//ka uztaisit, lai izprintejot parada, ka 0., 1. .. auto krasas utt ir...; vienkarsi gribu, lai ne tikai izprinte parametrus, bet ari norada ta auto indeksu, ka to dabut?
+                            //times++; ---> tas nesanaca ---> //zinu ka vareju c.Print() un rezultats butu tads pats, bet gribeju lai printesana rada, kuras masinas indeksam ir konkretas ipasibas
                         }
+                        
+                        //times = 0;
                         break;
                     case "2":
                         Console.WriteLine("Cik jaunas masinas Jus velaties pievienot?");
@@ -77,13 +81,17 @@ namespace Day9_MD
             }
         }
 
-        public void Print()
+        public void Print(/*int times*/)
         {
+            //for (int i = 0; i < times; i++)//kapec ja ir sis cikls, tad vins nesaglabaja jaunas izmainas attiecigajos parametros? tas piefikseja, ka ir X auto skaits, bet vinu parametros sagalbaja tuksumus, jo tas ir arpus foreach un vins nesaprot, ka izmainas notiek sarakstam..?
+            //{
                 Console.WriteLine();
+                //Console.WriteLine(i + ". Masinas ");
                 Console.Write("krasa: " + color + ", ");
                 Console.Write("marka: " + brand + ", ");
                 Console.Write("durvju skaits: " + doors);
                 Console.WriteLine();
+            //}
         }
 
         public void AddCar(int a)
@@ -111,97 +119,114 @@ namespace Day9_MD
         public void Search()
         {
             String search;
-            Console.WriteLine();
-            Console.WriteLine("Pec kadiem parametriem jus velaties mekle?");
-            Console.WriteLine("1 - auto krasas");
-            Console.WriteLine("2 - auto markas");
-            Console.WriteLine("3 - auto durvju skaita");
-            Console.WriteLine("4 - lai atgrieztos Menu");
-            Console.WriteLine("0 - lai izietu no programmas");
-
             String choice = "";
+            int i = 0;
+            bool found = false;
             while (choice != "0")
             {
+                Console.WriteLine();
+                Console.WriteLine("Pec kadiem parametriem jus velaties meklet?");
+                Console.WriteLine("1 - auto krasas");
+                Console.WriteLine("2 - auto markas");
+                Console.WriteLine("3 - auto durvju skaita");
+                Console.WriteLine("0 - atgriezties Menu");
                 choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "1":
+                        Console.WriteLine();
+                        Console.WriteLine("Ievadiet kadu krasu meklet!");
                         search = Console.ReadLine();
                         foreach(var a in car)
                         {
-                            Console.WriteLine(a);
+
+                            if(a.color.Contains(search))
+                            {
+                                if (a.color == search)
+                                {
+                                    Console.WriteLine("Tada krasa ir " + i + ". indeksa auto!");
+                                    found = true;
+                                }
+                            }
+                            i++;
                         }
-                        for (int i = 0; i < car.Count; i++)
+                        if (!found)
                         {
-                            //if (car.FirstOrDefault(x => x.color = search))
-                            //{
-                            //    Console.WriteLine("Tada krasa ir " + i + 1 + ". masinai");
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine("Tads rezultats nav atrodams!");
-                            //    Console.WriteLine();
-                            //    break;
-                            //}
+                            Console.WriteLine();
+                            Console.WriteLine("Mekleta krasa nav nevienai masinai!");
                         }
+                        i = 0;//sos i es lieku uz 0, jo radas problema, ka ar i++ vins muzigi skaitija un tadel jo vairak parbaudiju, tad 1. indekss vareja but 20, jo i pats sevi vienmer skaitija; sis bija mans kompromis, jo nevareju uztaisit for ciklu ka vajag (zemak bus redzams)
+                        found = false;
                         break;
                     case "2":
+                        Console.WriteLine();
+                        Console.WriteLine("Ievadiet kadu marku meklet!");
                         search = Console.ReadLine();
-                        for (int i = 0; i < car.Count; i++)
+                        foreach (var a in car)
                         {
-                            if (car.Contains(new Car { brand = search }))
+                            if (a.brand.Contains(search))
                             {
-                                Console.WriteLine("Tada marka ir " + i + 1 + ". masinai");
+                                if (a.brand == search)
+                                {
+                                    Console.WriteLine("Tada marka ir " + i + ". indeksa auto!");
+                                    found = true;
+                                }
                             }
-                            else
-                            {
-                                Console.WriteLine("Tads rezultats nav atrodams!");
-                                Console.WriteLine();
-                                break;
-                            }
+                            i++;
                         }
+                        if (!found)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Mekleta marka nav nevienai masinai!");
+                        }
+                        i = 0;
+                        found = false;
                         break;
                     case "3":
+                        Console.WriteLine();
+                        Console.WriteLine("Ievadiet meklejamo durvju skaitu!");
                         try 
                         { 
-                            int searchNum = Convert.ToInt32(Console.ReadLine()); 
-                            for (int i = 0; i < car.Count; i++)
+                            int searchNum = Convert.ToInt32(Console.ReadLine());
+                            foreach (var a in car)
                             {
-                                if (car.Contains(new Car { doors = searchNum }))
-                                { 
-                                    Console.WriteLine("Tads durvju skaits ir " + i + 1 + ". masinai");
-                                }
-                                else
+                                //for(int i = 0; i < a.color.Count; i++) kapec sadi vins nelauj?
+                                if (a.doors == searchNum)
                                 {
-                                    Console.WriteLine("Tads rezultats nav atrodams!");
-                                    Console.WriteLine();
-                                    break;
+                                    Console.WriteLine("Tads durvju skaits ir " + i + ". indeksa auto!");//kapec nevar izmantot - a.doors.IndexOf(searchNum) ?
+                                    found = true;
                                 }
+                                i++;
                             }
+                            if (!found)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("Mekletais durvju skaits nav nevienai masinai!");
+                            }
+                            i = 0;
+                            found = false;
                         }
                         catch
                         {
                             Console.WriteLine();
                             Console.WriteLine("Nepareiza ievade, ludzu, ievadiet ciparu!");
                             int newSearchNum = WrongInputCatch();
-                            for (int i = 0; i < car.Count; i++)
+                            foreach (var a in car)
                             {
-                                if (car.Contains(new Car { doors = newSearchNum }))
+                                if (a.doors == newSearchNum)
                                 {
-                                    Console.WriteLine("Tads durvju skaits ir " + i + 1 + ". masinai");
+                                    Console.WriteLine("Tads durvju skaits ir " + i + ". indeksa auto!");//kapec nevar izmantot - a.doors.IndexOf(searchNum) ?
                                 }
-                                else
-                                {
-                                    Console.WriteLine("Tads rezultats nav atrodams!");
-                                    Console.WriteLine();
-                                    break;
-                                }
+                                i++;
                             }
-                            
+                            if (!found)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("Mekletais durvju skaits nav nevienai masinai!");
+                            }
+                            i = 0;
+                            found = false;
                         }
-                        break;
-                    case "4":
-                        Menu();
                         break;
                     case "0":
                         break;
