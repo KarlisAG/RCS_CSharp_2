@@ -7,13 +7,14 @@ namespace Day10_MD
     {
         static int[] arr = new int[10000];
         static Stopwatch stopWatch = new Stopwatch();
+        static Stopwatch watch = new Stopwatch();
         static int[] arr2;
 
         static void Main(string[] args)
         {
             Random();
             Console.WriteLine("Sakas bubble sort");
-            //BubbleSort();
+            BubbleSort();
             Console.WriteLine("Sakas gnome sort");
             GnomeSort();
         }
@@ -35,22 +36,32 @@ namespace Day10_MD
                 arr[i] = random.Next(100000);
             }
             setArr2(arr);
-
-            //PrintArray(arr);
-
         }
+        public static void BubbleSort()
+        {
+            stopWatch.Start();
 
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            stopWatch.Stop();
+            Console.WriteLine("Aizņemtais laiks ciklam: " + stopWatch.ElapsedMilliseconds + " milisekundes");
+        }
         public static void GnomeSort()
         {
-            Stopwatch watch = stopWatch;
-
-            //PrintArray(arr2);
-            //Console.WriteLine("-----Pirms-----");
-            //PrintArray(arr);
-            watch.Start();
+            stopWatch.Reset();
+            stopWatch.Start();
 
             int g = 0;
-            //Console.WriteLine("Garums: " + arr2.Length);
             while (g < arr2.Length)
             {
                 if (g == 0)
@@ -70,52 +81,8 @@ namespace Day10_MD
                 }
             }
 
-            //Console.WriteLine();
-            //Console.WriteLine("-----Pēc-----");
-            //PrintArray(arr2);
-
-            watch.Stop();
-            Console.WriteLine("Aizņemtais laiks ciklam: " + watch.ElapsedMilliseconds + " milisekundes");
-        }
-
-
-        public static void BubbleSort()
-        {
-            //Console.WriteLine("-----Pirms------");
-            //PrintArray(arr);
-
-            stopWatch.Start();
-
-            for (int i = 0; i < arr.Length - 1; i++)
-            {
-                for (int j = 0; j < arr.Length - i - 1; j++)
-                {
-                    if (arr[j] > arr[j + 1])
-                    {
-                        int temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                }
-            }
-            //Console.WriteLine();
-            //Console.WriteLine("-----Pēc------");
-            //PrintArray(arr);
-
             stopWatch.Stop();
-
             Console.WriteLine("Aizņemtais laiks ciklam: " + stopWatch.ElapsedMilliseconds + " milisekundes");
-            stopWatch.Reset();
-
-        }
-
-
-        public static void PrintArray(int[] arr)
-        {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.Write(arr[i] + " ");
-            }
         }
     }
 }
