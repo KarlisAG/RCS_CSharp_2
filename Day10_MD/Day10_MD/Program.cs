@@ -8,7 +8,7 @@ namespace Day10_MD
         static int[] arr = new int[10000];
         static Stopwatch stopWatch = new Stopwatch();
         static Stopwatch watch = new Stopwatch();
-        static int[] arr2;
+        static int[] arr2 = new int[10000];
 
         static void Main(string[] args)
         {
@@ -35,7 +35,12 @@ namespace Day10_MD
             {
                 arr[i] = random.Next(100000);
             }
-            setArr2(arr);
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                arr2[i] = arr[i];
+            }
+            //setArr2(arr);
         }
         public static void BubbleSort()
         {
