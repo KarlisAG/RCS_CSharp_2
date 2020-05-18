@@ -6,6 +6,18 @@ namespace Diena10__Algorithms_Algoritmi
     {
         static void Main(string[] args)
         {
+            BubbleSort();
+
+        }
+
+        public static void GnomeSort() 
+        { 
+
+        }
+
+
+        public static void BubbleSort()
+        {
             Random rnd = new Random();
             int[] rndArray = new int[10];
 
@@ -13,7 +25,7 @@ namespace Diena10__Algorithms_Algoritmi
 
             for (int i = 0; i < rndArray.Length; i++)
             {
-                rndArray[i] = rnd.Next(40);
+                rndArray[i] = rnd.Next(41);//janem 1 vairak, jo ir neieskaitot to skaitli
                 Console.Write(rndArray[i] + " ");
             }
 
