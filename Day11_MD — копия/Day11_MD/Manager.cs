@@ -16,13 +16,14 @@ namespace Day11_MD
             this.yearsOfExperience = yearsOfExperience;
         }
 
-        public void Work()
+        public override void Work()//ar so strada ta pat jeb ir same rezultats, bet darbiba ir labaka it ka
         {
             Console.WriteLine("Manager is managing");
         }
-        public void Print()
+        public override void Print()
         {
-            Console.WriteLine(name + ", " + age + ", " + monthlySalary + ", " + yearsOfExperience);
+            Console.WriteLine(name + " " + yearsOfExperience);
+            //Console.WriteLine(name + ", " + age + ", " + monthlySalary + ", " + yearsOfExperience);
         }
     }
 }

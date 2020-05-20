@@ -20,9 +20,9 @@ namespace Day11_MD
         {
             Console.WriteLine("DatabasePro is databasing");
         }
-        public void Print()
+        public override void Print()//jābūt override
         {
-            Console.WriteLine(name + ", " + age + ", " + monthlySalary + ", " + databaseTool);
+            Console.WriteLine(name + " " + databaseTool);
         }
     }
 }

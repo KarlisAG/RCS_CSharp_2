@@ -20,9 +20,9 @@ namespace Day11_MD
         {
             Console.WriteLine("Programmer is programming");
         }
-        public void Print()
+        public override void Print()
         {
-            Console.WriteLine(name + ", " + age + ", " + monthlySalary + ", " + language);
+            Console.WriteLine(name + " " + language);
         }
     }
 }

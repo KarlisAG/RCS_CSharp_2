@@ -16,6 +16,12 @@ namespace Day11_MD
 
             DatabasePRO d = new DatabasePRO("Oskars", 25, 1500, "aa");
             d.Work();
+            //ja klase ir abstrakta, tad no tās nevar taisīt objektu; un kalpo tikai kā bāze
+            //visas īpašības vēl var mantot
+            //Employee e = new Employee();
+            //e.Work();
+
+
         }
 
         public void MD()
