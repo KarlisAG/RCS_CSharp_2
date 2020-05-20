@@ -9,10 +9,5 @@ namespace Day11_MD
         protected String name;
         protected int age;
         protected int monthlySalary;
-
-        public void Print()
-        {
-            Console.WriteLine("wrong---------------");
-        }
     }
 }

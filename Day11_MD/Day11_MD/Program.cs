@@ -10,6 +10,7 @@ namespace Day11_MD
         {
             List<Employee> e = new List<Employee>();
             Console.WriteLine("Sveiki! Ievadiet, ludzu, datus par savas komandas dalibniekiem");
+            Console.WriteLine();
             Console.WriteLine("Menedzers");
             e.Add(new Manager (Name(), Age(), MonthlySalary(), YearsOfExperience()));
             Console.WriteLine();
@@ -22,10 +23,21 @@ namespace Day11_MD
             Console.WriteLine("datubazu eksperts");
             e.Add(new DatabasePRO (Name(), Age(), MonthlySalary(), DatabaseTool()));
 
-            foreach(var a in e)
-            {
-                a.Print();
-            }
+            //foreach (Manager a in e)
+            //{
+            //    a.Print();
+            //}
+
+            //foreach (Programmer a in e)
+            //{
+            //    a.Print();
+            //}
+
+            //foreach (DatabasePRO a in e)
+            //{
+            //    a.Print();
+            //}
+
         }
 
         public static String Name()
