@@ -8,34 +8,46 @@ namespace Day11_MD
     {
         static void Main(string[] args)
         {
+            Programmer p = new Programmer("janis", 22, 2000, "c#");
+            p.Work();
+
+            Manager m = new Manager("Martins", 27, 2200, 2);
+            m.Work();
+
+            DatabasePRO d = new DatabasePRO("Oskars", 25, 1500, "aa");
+            d.Work();
+        }
+
+        public void MD()
+        {
             List<Employee> e = new List<Employee>();
             Console.WriteLine("Sveiki! Ievadiet, ludzu, datus par savas komandas dalibniekiem");
             Console.WriteLine();
             Console.WriteLine("Menedzers");
-            e.Add(new Manager (Name(), Age(), MonthlySalary(), YearsOfExperience()));
+            e.Add(new Manager(Name(), Age(), MonthlySalary(), YearsOfExperience()));
             Console.WriteLine();
             Console.WriteLine("1. programmetajs");
-            e.Add(new Programmer (Name(), Age(), MonthlySalary(), Language()));
+            e.Add(new Programmer(Name(), Age(), MonthlySalary(), Language()));
             Console.WriteLine();
             Console.WriteLine("2. programmetajs");
             e.Add(new Programmer(Name(), Age(), MonthlySalary(), Language()));
             Console.WriteLine();
             Console.WriteLine("datubazu eksperts");
-            e.Add(new DatabasePRO (Name(), Age(), MonthlySalary(), DatabaseTool()));
+            e.Add(new DatabasePRO(Name(), Age(), MonthlySalary(), DatabaseTool()));
 
             //foreach (Manager a in e)
             //{
             //    a.Print();
             //}
-            foreach(Employee em in e)
+            foreach (Employee em in e)
             {
-                if(em is Manager m)
+                if (em is Manager m)
                 {
                     //tad šādi var čekot kas ir tajā un var daīt konkrēto darbību
                 }
                 else
                 {
-                    if(em is Programmer)//ar is tu pārbaudi nevis vērtību bet tipu!!
+                    if (em is Programmer)//ar is tu pārbaudi nevis vērtību bet tipu!!
                     {
 
                     }
@@ -57,7 +69,6 @@ namespace Day11_MD
 
             Programmer p1 = GetProgrammer();
             Programmer p2 = GetProgrammer();
-
         }
 
         public static String Name()
