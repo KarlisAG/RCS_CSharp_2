@@ -13,12 +13,14 @@ namespace Diena12_OOP_turp_
         {
             Move();
             MakeSound();
-            Sleep();
         }
         public abstract void Move();
         public abstract void MakeSound();
 
-        public abstract void Sleep();
+        public virtual void Sleep()
+        {
+            Console.WriteLine("The animal sleeps");
+        }
 
         public abstract void Print();
 

@@ -8,24 +8,28 @@ namespace Diena12_OOP_turp_
         {
             Dog d = new Dog(4, false, true);
             d.Action();
+            d.Sleep();
             Console.WriteLine();
 
             Cat c = new Cat(4, false, true);
             c.Action();
+            c.Sleep();
             Console.WriteLine();
 
-            Parrot p = new Parrot(2, true, true);
-            p.Action();
+            Birds b = new Birds(2, true, true);
+            b.Action();
+            b.Sleep();
             Console.WriteLine();
 
-            Sparrow s = new Sparrow(2, true, "brown");
-            s.Action();
+            Birds b2 = new Birds(2, true, false,  "brown");
+            b2.Action();
+            b2.Sleep();
             Console.WriteLine();
 
             d.Print();
             c.Print();
-            p.Print();
-            s.Print();
+            b.Print();
+            b2.Print();
         }
     }
 }

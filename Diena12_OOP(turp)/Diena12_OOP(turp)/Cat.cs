@@ -28,12 +28,12 @@ namespace Diena12_OOP_turp_
             Console.WriteLine();
             Console.Write("This is a cat. It has " + legCount + " legs and it ");
             Console.Write(hasWings ? "has wings " : "does not have wings ");
-            Console.Write(sleepsALot ? "and sleeps a lot" : "and doesnt sleep a lot");
+            Console.Write(sleepsALot ? "and it sleeps a lot" : "and it doesnt sleep a lot");
         }
 
         public override void Sleep()
         {
-            Console.WriteLine("Quite snore");
+            Console.WriteLine("Quiet snore");
         }
     }
 }
