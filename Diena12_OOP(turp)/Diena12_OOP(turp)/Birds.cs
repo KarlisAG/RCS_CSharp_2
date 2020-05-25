@@ -41,7 +41,7 @@ namespace Diena12_OOP_turp_
             Console.Write(isExotic ? "The parrot " : "The sparrow ");
             Console.Write("has " + legCount + " legs and it ");
             Console.Write(hasWings ? "has wings " : "does not have wings ");
-            Console.Write(isExotic ? "and it is exotic" : "and it isnt exotic");
+            Console.Write(isExotic ? "and it is exotic" : "and it isnt exotic, but it is {0}", color);
         }
 
         public new void Sleep()
