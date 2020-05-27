@@ -31,7 +31,7 @@ namespace Diena14_GUILists
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (txtBoxNumber.Text.Length == 0)
+            if (txtBoxNumber.Text.Length == 0 /*|| txtBoxNumber.Text == "Ievadiet indeksu"*/)
             {
                 if (txtBox.Text.Length == 0)
                 {
@@ -57,12 +57,13 @@ namespace Diena14_GUILists
                 {
                     lblMessage.Text = "Jums ir jāievada cipars!";
                 }
+                //txtBoxNumber.Text = "Ievadiet indeksu";
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (txtBoxNumber.Text.Length == 0)
+            if (txtBoxNumber.Text.Length == 0 /*|| txtBoxNumber.Text == "Ievadiet indeksu"*/)
             {
                 if (txtBox.Text.Length == 0)
                 {
@@ -89,7 +90,7 @@ namespace Diena14_GUILists
                 {
 
                 }
-
+                //txtBoxNumber.Text = "Ievadiet indeksu";
             }
         }
 
@@ -111,7 +112,22 @@ namespace Diena14_GUILists
         //    lstTest.Items.Add(Convert.ToString(2));
         //}
 
+        /* pasniedzēja variants
+        pie add
 
+       if (inputBox.Text != ""){
+        lstElements.Items.Add(inputBox.Text)}
 
+        pie delete
+        foreach(ListViewItem item in lstElements.SelectedItems)
+        {
+        //piekļūst pie aktra itema kas ir selektots - kas ir pie lista, pats cilvēks var iekrāsot un tad uzspiest uz pogu
+        item.Remove();
+        }
+
+        pie edit
+
+        lstElements.SelectedItems[0].Text = inputBox.Text;
+        */
     }
 }
