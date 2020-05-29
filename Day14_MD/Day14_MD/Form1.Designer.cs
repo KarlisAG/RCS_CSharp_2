@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lstMain = new System.Windows.Forms.ListView();
-            this.lstBackup = new System.Windows.Forms.ListView();
             this.txtIn = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -37,6 +36,7 @@
             this.btnUndo = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
             this.txtChoice = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // lstMain
@@ -48,15 +48,6 @@
             this.lstMain.TabIndex = 0;
             this.lstMain.UseCompatibleStateImageBehavior = false;
             this.lstMain.View = System.Windows.Forms.View.List;
-            // 
-            // lstBackup
-            // 
-            this.lstBackup.HideSelection = false;
-            this.lstBackup.Location = new System.Drawing.Point(667, 341);
-            this.lstBackup.Name = "lstBackup";
-            this.lstBackup.Size = new System.Drawing.Size(121, 97);
-            this.lstBackup.TabIndex = 1;
-            this.lstBackup.UseCompatibleStateImageBehavior = false;
             // 
             // txtIn
             // 
@@ -123,11 +114,21 @@
             this.txtChoice.TabIndex = 8;
             this.txtChoice.Visible = false;
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(634, 102);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(154, 317);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.txtChoice);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnUndo);
@@ -135,7 +136,6 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtIn);
-            this.Controls.Add(this.lstBackup);
             this.Controls.Add(this.lstMain);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -147,7 +147,6 @@
         #endregion
 
         private System.Windows.Forms.ListView lstMain;
-        private System.Windows.Forms.ListView lstBackup;
         private System.Windows.Forms.TextBox txtIn;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
@@ -155,6 +154,7 @@
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.TextBox txtChoice;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 
