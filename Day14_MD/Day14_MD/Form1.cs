@@ -127,7 +127,7 @@ namespace Day14_MD
                     bool contains = false;
                     for (int i = 0; i < lstMain.Items.Count; i++)
                     {
-                        if (lstMain.Items[i].Text == lastDeleted)
+                        if (lstMain.Items[i].Text == txtIn.Text)
                         {
                             lblInfo.Text = "Jus nedrikstat veidot dublikatus!";
                             contains = true;
