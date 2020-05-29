@@ -104,7 +104,6 @@
             this.lblInfo.Size = new System.Drawing.Size(296, 13);
             this.lblInfo.TabIndex = 7;
             this.lblInfo.Text = "Izvelaties kadu darbibu velaties veikt, tad sekojiet instrukcijai!";
-            this.lblInfo.Click += new System.EventHandler(this.lblInfo_Click);
             // 
             // txtChoice
             // 

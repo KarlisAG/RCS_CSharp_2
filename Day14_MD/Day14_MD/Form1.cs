@@ -14,10 +14,19 @@ namespace Day14_MD
     public partial class Form1 : Form
     {
         int AddTimes = 0;
-        ListView lstBackup = new ListView();
+        int DeleteTimes = 0;
+        int EditTimes = 0;
+
         int lastClicked = 0;
+
         String lastAdded;
+        String lastDeleted;
+        int removedAt;
+        String beforeEdit;
+        int beforeEditAt;
+
         int lstLength;
+
         public Form1()
         {
             InitializeComponent();
@@ -65,8 +74,6 @@ namespace Day14_MD
                         }
                         
                     }
-                    
-                    
                 }
             }
             lstLength = lstMain.Items.Count;
@@ -78,11 +85,9 @@ namespace Day14_MD
         {
             lastClicked = 2;
             //ListCopy();
-            int times = 0;
             txtChoice.Visible = true;
-            if (times == 0)
+            if (DeleteTimes == 0)
             {
-                //lblInfo.Text = "Ar kursoru iezimejiet elementu saraksta, kuru velaties izdzest un tad spiediet Delete";
                 lblInfo.Text = "Zemak ierakstiet elementa indeksu, kuru velaties iznemt";
             }
             else
@@ -90,57 +95,115 @@ namespace Day14_MD
                 int choice;
                 try
                 {
-                    choice = Convert.ToInt32(txtChoice);
-                    lstMain.Items.RemoveAt(choice);
+                    choice = Convert.ToInt32(txtChoice.Text);
+                    removedAt = choice;
+                    lastDeleted = lstMain.Items[choice].Text;
+                    lstMain.Items[choice].Remove();
                 }
                 catch
                 {
                     lblInfo.Text = "Ievades kluda";
                 }
-                
-
-                //foreach (ListViewItem item in lstMain.SelectedItems)
-                //{
-                //    item.Remove();
-                //}
             }
             txtIn.Clear();
             txtChoice.Clear();
-            times++;
-
+            DeleteTimes++;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             lastClicked = 3;
             //ListCopy();
-
+            txtChoice.Visible = true;
+            if(EditTimes == 0)
+            {
+                lblInfo.Text = "Zemaka lauka ierakstiet, kura indeksa elementu jus valaties mainit un kreisaja lauka ierakstiet ar ko jus to velaties aizvietot, tad spiediet Edit!";
+            }
+            else
+            {
+                int choice;
+                try
+                {
+                    bool contains = false;
+                    for (int i = 0; i < lstMain.Items.Count; i++)
+                    {
+                        if (lstMain.Items[i].Text == lastDeleted)
+                        {
+                            lblInfo.Text = "Jus nedrikstat veidot dublikatus!";
+                            contains = true;
+                        }
+                    }
+                    if (!contains)
+                    {
+                        choice = Convert.ToInt32(txtChoice.Text);
+                        beforeEdit = lstMain.Items[choice].Text;
+                        beforeEditAt = choice;
+                        lstMain.Items[choice].Text = txtIn.Text;
+                    }
+                }
+                catch
+                {
+                    lblInfo.Text = "Ievades kluda";
+                }
+                
+            }
+            txtIn.Clear();
+            txtChoice.Clear();
+            EditTimes++;
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-            //lblInfo.Text = lastClicked + " " + lastAdded;
             switch (lastClicked)
             {
                 case 1:
-                    lstMain.Items.RemoveAt(lstLength - 1);
+                    try
+                    {
+                        lstMain.Items.RemoveAt(lstLength - 1);
+                    }
+                    catch
+                    {
+                        lblInfo.Text = "Jus nevarat veikt Undo darbibu divas reizes pec kartas bez nekadam pastarpinatam darbibam!";
+                    }
                     break;
                 case 2:
-
+                    bool contains = false;
+                    for (int i = 0; i < lstMain.Items.Count; i++)
+                    {
+                        if (lstMain.Items[i].Text == lastDeleted)
+                        {
+                            contains = true;
+                        }
+                    }
+                    if (!contains)
+                    {
+                        lstMain.Items.Insert(removedAt, lastDeleted);
+                    }
+                    break;
+                case 3:
+                    try
+                    {
+                        lstMain.Items[beforeEditAt].Text = beforeEdit;
+                    }
+                    catch
+                    {
+                        lblInfo.Text = "Jums ir javeic kadas Edit izmainas kada/-os elementa/-os pirms varat veikt Undo darbibu!";
+                    }
+                    break;
+                case 0:
+                    lblInfo.Text = "Jums ir javeic kadas izmainas saraksta pirms varat veikt Undo darbibu!";
+                    break;
+                default:
                     break;
             }
-            //lstMain.Clear();
-            //for (int i = 0; i < listView1.Items.Count; i++)
-            //{
-            //    lstMain.Items[i] = listView1.Items[i];
-            //}
         }
 
         private void ListCopy()
         {
-            listView1.Items.Clear();
+            //listView1.Items.Clear();
             //string[] lst = new string[lstMain.Items.Count];
             //lstMain.Items.CopyTo(lst, 0);
+            //
             //for (int i = 0; i < lst.Length; i++)
             //{
             //    listView1.Items.Add(lst[i]);
@@ -167,28 +230,11 @@ namespace Day14_MD
             //{
             //    listView1.Items.Add(b);
             //}
-        }
-
-        private void lblInfo_Click(object sender, EventArgs e)
-        {
-
+            //lstMain.Clear();
+            //for (int i = 0; i < listView1.Items.Count; i++)
+            //{
+            //    lstMain.Items[i] = listView1.Items[i];
+            //}
         }
     }
 }
-/* pasniedzēja variants
-        pie add
-
-       if (inputBox.Text != ""){
-        lstElements.Items.Add(inputBox.Text)}
-
-        pie delete
-        foreach(ListViewItem item in lstElements.SelectedItems)
-        {
-        //piekļūst pie aktra itema kas ir selektots - kas ir pie lista, pats cilvēks var iekrāsot un tad uzspiest uz pogu
-        item.Remove();
-        }
-
-        pie edit
-
-        lstElements.SelectedItems[0].Text = inputBox.Text;
-        */
