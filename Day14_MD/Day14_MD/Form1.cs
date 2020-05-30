@@ -239,7 +239,7 @@ namespace Day14_MD
             //    lstMain.Items[i] = listView1.Items[i];
             //}
 
-            /* p.v.
+            /* pasniedzeja variants
              * ToStringList - metode
              * OldList.Clear();
              * foreach(ListViewItem item in lstElements.Items)
