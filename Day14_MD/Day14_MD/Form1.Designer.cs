@@ -121,6 +121,7 @@
             this.listView1.Size = new System.Drawing.Size(154, 317);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.Visible = false;
             // 
             // Form1
             // 
