@@ -27,9 +27,12 @@ namespace Day14_MD
 
         int lstLength;
 
+        private List<String> OldList;//pasniedzeja variants
         public Form1()
         {
             InitializeComponent();
+
+            OldList = new List<String>();//p.v.
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -235,6 +238,28 @@ namespace Day14_MD
             //{
             //    lstMain.Items[i] = listView1.Items[i];
             //}
+
+            /* p.v.
+             * ToStringList - metode
+             * OldList.Clear();
+             * foreach(ListViewItem item in lstElements.Items)
+             * {
+             * OldList.Add(item.Text);
+             * }
+             * 
+             * ToListView - metode
+             * lstElements.Items.Clear();
+             * 
+             * foreach(String element in OldList)
+             * {
+             * lstElements.Items.Add(element);
+             * }
+             * 
+             * undopoga_click
+             * ToListView();
+             * 
+             * viss parejais bija pareizi - ToStringList(); liek visu citu metožu sākumā...
+             */
         }
     }
 }
