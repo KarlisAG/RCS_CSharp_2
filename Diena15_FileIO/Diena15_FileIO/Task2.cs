@@ -8,7 +8,7 @@ namespace Diena15_FileIO
 {
     class Task2
     {
-        public static void Read()
+        public static void Reverse()
         {
             String[] text = File.ReadAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Task2\Test.txt");
 
