@@ -138,6 +138,15 @@ namespace Diena15_FileIO
 
                     }
                 }
+
+                //Console.WriteLine();
+                //String[] arrLine = File.ReadAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt");
+                //int choice = Convert.ToInt32(Console.ReadLine());
+                //Console.WriteLine("Ierakstiet jauno tekstu!");
+                //arrLine[choice - 1] = Console.ReadLine();
+                //Console.WriteLine("Kada faila jus saglabat izmainas?");
+                //String fileName = Console.ReadLine();
+                //File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + fileName + ".txt", arrLine);
                 sw.Close();
                 Menu();
             }

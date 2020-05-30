@@ -9,7 +9,9 @@ namespace Diena15_FileIO
             //Example.Write();
             //Example.Read();
 
-            Task1.Menu();
+            //Task1.Menu();
+
+            Task2.Read();
         }
     }
 }
