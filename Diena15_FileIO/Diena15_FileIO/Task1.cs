@@ -19,6 +19,7 @@ namespace Diena15_FileIO
                 Console.WriteLine("2 - parrakstit failu ar jaunu tekstu");
                 Console.WriteLine("3 - pierakstit klat tekstu faila beigas");
                 Console.WriteLine("4 - rediget kadu konkretu liniju faila");
+                Console.WriteLine("0 - iziet no programmas");
 
                 choice = Console.ReadLine();
 
@@ -50,7 +51,7 @@ namespace Diena15_FileIO
             String line;
             try
             {
-                Console.WriteLine("Ievadiet .txt faila nosaukumu, kuru velaties lasti (default ir Text1)");
+                Console.WriteLine("Ievadiet .txt faila nosaukumu, kuru velaties lasti (default = Text1 (ari turpmak))");
                 String fileName = Console.ReadLine();
                 StreamReader sr = new StreamReader(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + fileName + ".txt");
                 line = sr.ReadLine();
@@ -125,22 +126,46 @@ namespace Diena15_FileIO
         {
             try
             {
-                StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt", Save());
-                Console.WriteLine("Ierakstiet tekstu, kuru velaties pierakstit klat faila beigas!");
-                bool stop = false;
-                while (!stop)
+                if (Save())
                 {
-                    String newText = Console.ReadLine();
-                    sw.WriteLine(newText);
-                    Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
-                    String choice = Console.ReadLine();
-                    if (choice == "STOP")
+                    StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt", Save());
+                    Console.WriteLine("Ierakstiet tekstu, kuru velaties pierakstit klat faila beigas!");
+                    bool stop = false;
+                    while (!stop)
                     {
-                        stop = true;
+                        String newText = Console.ReadLine();
+                        sw.WriteLine(newText);
+                        Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
+                        String choice = Console.ReadLine();
+                        if (choice == "STOP")
+                        {
+                            stop = true;
 
+                        }
                     }
+                    sw.Close();
                 }
-                sw.Close();
+                else
+                {
+                    Console.WriteLine("Ierakstiet jauna .txt faila nosaukumu");
+                    String name = Console.ReadLine();
+                    StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt", true);
+                    Console.WriteLine("Ierakstiet tekstu, kuru velaties pierakstit klat faila beigas!");
+                    bool stop = false;
+                    while (!stop)
+                    {
+                        String newText = Console.ReadLine();
+                        sw.WriteLine(newText);
+                        Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
+                        String choice = Console.ReadLine();
+                        if (choice == "STOP")
+                        {
+                            stop = true;
+
+                        }
+                    }
+                    sw.Close();
+                }
                 Menu();
             }
             catch
@@ -151,17 +176,19 @@ namespace Diena15_FileIO
 
         public static void WriteEdit()
         {
-             Console.WriteLine("Ievadiet kuru teksta liniju velaties rediget!");
-             String[] arrLine = File.ReadAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt");
-             int choice = Convert.ToInt32(Console.ReadLine());
-             Console.WriteLine("Ierakstiet jauno tekstu!");
-             arrLine[choice - 1] = Console.ReadLine();
-             File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt", arrLine);
+            Console.WriteLine("Ierakstiet .txt faila nosaukumu, kuru velaties rediget");
+            String name = Console.ReadLine();
+            Console.WriteLine("Ievadiet kuru teksta liniju velaties rediget!");
+            String[] arrLine = File.ReadAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ierakstiet jauno tekstu!");
+            arrLine[choice - 1] = Console.ReadLine();
+            File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt", arrLine);
         }
 
         private static bool Save()
         {
-            Console.WriteLine("Vai jus gribesiet izmainas saglabat esosaja faila vai jauna?");
+            Console.WriteLine("Vai jus gribesiet izmainas saglabat esosaja faila vai jauna? (default)");
             Console.WriteLine("1 - taja pasa");
             Console.WriteLine("2 - jauna");
             String choice = Console.ReadLine();
