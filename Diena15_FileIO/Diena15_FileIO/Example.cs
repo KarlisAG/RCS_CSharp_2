@@ -35,8 +35,8 @@ namespace Diena15_FileIO
         {
             try
             {
-                StreamWriter sw = new StreamWriter(@"C:\Users\akots\OneDrive\Työpöytä\LU VFF\Text.txt"); //ja padod jaulu, kas neeksiste, tad vins pats uztaisis jaunu failu tur
-
+                StreamWriter sw = new StreamWriter(@"C:\Users\akots\OneDrive\Työpöytä\LU VFF\Text.txt", true); //ja padod jaulu, kas neeksiste, tad vins pats uztaisis jaunu failu tur
+                //^^ ar to true, tad vins nevis parrkasta pari, bet pieraksta klat
                 sw.WriteLine("ello!");
                 sw.WriteLine("from the other side");
 

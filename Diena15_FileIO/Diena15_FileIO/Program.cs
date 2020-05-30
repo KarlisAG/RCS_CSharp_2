@@ -6,8 +6,10 @@ namespace Diena15_FileIO
     {
         static void Main(string[] args)
         {
-            Example.Write();
-            Example.Read();
+            //Example.Write();
+            //Example.Read();
+
+            Task1.Menu();
         }
     }
 }
