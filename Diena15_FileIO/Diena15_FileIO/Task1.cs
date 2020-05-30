@@ -159,7 +159,9 @@ namespace Diena15_FileIO
                 int choice = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Ierakstiet jauno tekstu!");
                 arrLine[choice - 1] = Console.ReadLine();
-                File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt", arrLine);
+                Console.WriteLine("Kada faila jus velaties veikt izmainas?");
+                String fileName = Console.ReadLine();
+                File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + fileName + ".txt", arrLine);
             }
             catch
             {
