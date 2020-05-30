@@ -32,7 +32,7 @@ namespace Diena15_task3
         {
             String[] elementi = richTextBox1.Text.Split('\n');
             File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Task2\Test.txt", elementi);
-            File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Task2\Test234.txt", elementi);
+            //File.WriteAllLines(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Task2\Test234.txt", elementi); -> ja vajag cita faila
         }
     }
 }
