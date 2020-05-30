@@ -74,46 +74,32 @@ namespace Diena15_FileIO
         {
             try
             {
+                StreamWriter sw;
                 if (Save())
                 {
-                    StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt");
-                    Console.WriteLine("Ierakstiet jauno tekstu");
-                    bool stop = false;
-                    while (!stop)
-                    {
-                        String newText = Console.ReadLine();
-                        sw.WriteLine(newText);
-                        Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
-                        String choice = Console.ReadLine();
-                        if (choice == "STOP")
-                        {
-                            stop = true;
-
-                        }
-                    }
-                    sw.Close();
+                    sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt");
                 }
                 else
                 {
                     Console.WriteLine("Ierakstiet jauna .txt faila nosaukumu");
                     String name = Console.ReadLine();
-                    StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt", true);
-                    Console.WriteLine("Ierakstiet jauno tekstu");
-                    bool stop = false;
-                    while (!stop)
-                    {
-                        String newText = Console.ReadLine();
-                        sw.WriteLine(newText);
-                        Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
-                        String choice = Console.ReadLine();
-                        if (choice == "STOP")
-                        {
-                            stop = true;
-
-                        }
-                    }
-                    sw.Close();
+                    sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt", true);
                 }
+                Console.WriteLine("Ierakstiet jauno tekstu");
+                bool stop = false;
+                while (!stop)
+                {
+                    String newText = Console.ReadLine();
+                    sw.WriteLine(newText);
+                    Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
+                    String choice = Console.ReadLine();
+                    if (choice == "STOP")
+                    {
+                        stop = true;
+
+                    }
+                }
+                sw.Close();
                 Menu();
             }
             catch
@@ -126,46 +112,33 @@ namespace Diena15_FileIO
         {
             try
             {
+                StreamWriter sw;
                 if (Save())
                 {
-                    StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt");
-                    Console.WriteLine("Ierakstiet tekstu, kuru velaties pierakstit klat faila beigas!");
-                    bool stop = false;
-                    while (!stop)
-                    {
-                        String newText = Console.ReadLine();
-                        sw.WriteLine(newText);
-                        Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
-                        String choice = Console.ReadLine();
-                        if (choice == "STOP")
-                        {
-                            stop = true;
-
-                        }
-                    }
-                    sw.Close();
+                    sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Text1.txt");
+                    
                 }
                 else
                 {
                     Console.WriteLine("Ierakstiet jauna .txt faila nosaukumu");
                     String name = Console.ReadLine();
-                    StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt", true);
-                    Console.WriteLine("Ierakstiet tekstu, kuru velaties pierakstit klat faila beigas!");
-                    bool stop = false;
-                    while (!stop)
-                    {
-                        String newText = Console.ReadLine();
-                        sw.WriteLine(newText);
-                        Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
-                        String choice = Console.ReadLine();
-                        if (choice == "STOP")
-                        {
-                            stop = true;
-
-                        }
-                    }
-                    sw.Close();
+                    sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\" + name + ".txt", true);
                 }
+                Console.WriteLine("Ierakstiet tekstu, kuru velaties pierakstit klat faila beigas!");
+                bool stop = false;
+                while (!stop)
+                {
+                    String newText = Console.ReadLine();
+                    sw.WriteLine(newText);
+                    Console.WriteLine("Ja velaties beigt rakstit klat, ievadiet STOP");
+                    String choice = Console.ReadLine();
+                    if (choice == "STOP")
+                    {
+                        stop = true;
+
+                    }
+                }
+                sw.Close();
                 Menu();
             }
             catch
