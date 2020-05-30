@@ -12,6 +12,7 @@ namespace Diena15_FileIO
             //Task1.Menu();
 
             Task2.Reverse();
+            Task2.Run();
         }
     }
 }
