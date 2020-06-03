@@ -17,6 +17,7 @@ namespace Diena16_Files
             int studentCourse = Convert.ToInt32(students[2]);
 
             Students st = new Students(students[0], students[1], studentCourse);
+            st.print();
         }
     }
 }
