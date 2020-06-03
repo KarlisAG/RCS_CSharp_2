@@ -6,8 +6,9 @@ namespace Diena16_Files
     {
         static void Main(string[] args)
         {
-            Task1.Run();
-
+            //Task1.Run();
+            Task2.Run();
+            //Task3.Menu(); - vajag statisku
         }
     }
 }
