@@ -49,12 +49,13 @@
             this.Kurss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Indekss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnFilter = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblVards
             // 
             this.lblVards.AutoSize = true;
-            this.lblVards.Location = new System.Drawing.Point(50, 47);
+            this.lblVards.Location = new System.Drawing.Point(50, 37);
             this.lblVards.Name = "lblVards";
             this.lblVards.Size = new System.Drawing.Size(34, 13);
             this.lblVards.TabIndex = 0;
@@ -63,7 +64,7 @@
             // lblUzvards
             // 
             this.lblUzvards.AutoSize = true;
-            this.lblUzvards.Location = new System.Drawing.Point(50, 77);
+            this.lblUzvards.Location = new System.Drawing.Point(50, 67);
             this.lblUzvards.Name = "lblUzvards";
             this.lblUzvards.Size = new System.Drawing.Size(46, 13);
             this.lblUzvards.TabIndex = 1;
@@ -72,7 +73,7 @@
             // lblKurss
             // 
             this.lblKurss.AutoSize = true;
-            this.lblKurss.Location = new System.Drawing.Point(50, 107);
+            this.lblKurss.Location = new System.Drawing.Point(50, 97);
             this.lblKurss.Name = "lblKurss";
             this.lblKurss.Size = new System.Drawing.Size(33, 13);
             this.lblKurss.TabIndex = 2;
@@ -80,21 +81,21 @@
             // 
             // txtUzvards
             // 
-            this.txtUzvards.Location = new System.Drawing.Point(102, 69);
+            this.txtUzvards.Location = new System.Drawing.Point(102, 59);
             this.txtUzvards.Name = "txtUzvards";
             this.txtUzvards.Size = new System.Drawing.Size(100, 20);
             this.txtUzvards.TabIndex = 2;
             // 
             // txtKurss
             // 
-            this.txtKurss.Location = new System.Drawing.Point(102, 99);
+            this.txtKurss.Location = new System.Drawing.Point(102, 89);
             this.txtKurss.Name = "txtKurss";
             this.txtKurss.Size = new System.Drawing.Size(100, 20);
             this.txtKurss.TabIndex = 3;
             // 
             // txtVards
             // 
-            this.txtVards.Location = new System.Drawing.Point(102, 39);
+            this.txtVards.Location = new System.Drawing.Point(102, 29);
             this.txtVards.Name = "txtVards";
             this.txtVards.Size = new System.Drawing.Size(100, 20);
             this.txtVards.TabIndex = 1;
@@ -111,7 +112,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(208, 40);
+            this.btnAdd.Location = new System.Drawing.Point(208, 30);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(104, 23);
             this.btnAdd.TabIndex = 7;
@@ -121,7 +122,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(208, 69);
+            this.btnDelete.Location = new System.Drawing.Point(208, 59);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(104, 23);
             this.btnDelete.TabIndex = 8;
@@ -131,7 +132,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(208, 156);
+            this.btnSave.Location = new System.Drawing.Point(208, 146);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(104, 23);
             this.btnSave.TabIndex = 10;
@@ -141,7 +142,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(208, 98);
+            this.btnEdit.Location = new System.Drawing.Point(208, 88);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(104, 23);
             this.btnEdit.TabIndex = 9;
@@ -151,7 +152,7 @@
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(208, 185);
+            this.btnShow.Location = new System.Drawing.Point(208, 204);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(104, 23);
             this.btnShow.TabIndex = 11;
@@ -177,7 +178,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(208, 214);
+            this.btnClose.Location = new System.Drawing.Point(208, 233);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(104, 23);
             this.btnClose.TabIndex = 13;
@@ -188,7 +189,7 @@
             // 
             // txtChoice
             // 
-            this.txtChoice.Location = new System.Drawing.Point(318, 98);
+            this.txtChoice.Location = new System.Drawing.Point(318, 88);
             this.txtChoice.Name = "txtChoice";
             this.txtChoice.Size = new System.Drawing.Size(100, 20);
             this.txtChoice.TabIndex = 14;
@@ -197,7 +198,7 @@
             // lblIndex
             // 
             this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(424, 103);
+            this.lblIndex.Location = new System.Drawing.Point(424, 93);
             this.lblIndex.Name = "lblIndex";
             this.lblIndex.Size = new System.Drawing.Size(85, 13);
             this.lblIndex.TabIndex = 15;
@@ -224,7 +225,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(208, 127);
+            this.btnFilter.Location = new System.Drawing.Point(208, 117);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(104, 23);
             this.btnFilter.TabIndex = 16;
@@ -232,11 +233,22 @@
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(208, 175);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(104, 23);
+            this.btnLoad.TabIndex = 17;
+            this.btnLoad.Text = "Take from file";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1211, 536);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.txtChoice);
@@ -284,6 +296,7 @@
         private System.Windows.Forms.ColumnHeader Kurss;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
 

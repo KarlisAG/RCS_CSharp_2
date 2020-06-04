@@ -22,6 +22,8 @@ namespace Day16_MD
         int deleteTimes = 0;
         int editTimes = 0;
         int filterTimes = 0;
+        int loadTimes = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,27 +31,37 @@ namespace Day16_MD
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
+            if (txtVards.Text.Length < 1 || txtUzvards.Text.Length < 1 || txtKurss.Text.Length < 1)
             {
-                int courseIndx = Convert.ToInt32(txtKurss.Text);
-
-                if (courseIndx < 1 || courseIndx > 3)
-                {
-                    lblIndex.Text = "Studentu kursam ir jabut no 1 lidz 3!";
-                }
-                else
-                {
-                    stList.Add(new Student(txtVards.Text, txtUzvards.Text, courseIndx));
-                    name.Add(txtVards.Text);
-                    surname.Add(txtUzvards.Text);
-                    course.Add(txtKurss.Text);
-                    lblInfo.Text = "Students veiksmigi pievienots!";
-                    UpdateList();
-                }
+                lblInfo.Text = "Jums ir jaaizpilda lauki!";
             }
-            catch
+            else
             {
-                lblInfo.Text = "Jums pie kursa ir jaievada vesels cipars!";
+                try
+                {
+                    int courseIndx = Convert.ToInt32(txtKurss.Text);
+
+                    if (courseIndx < 1 || courseIndx > 3)
+                    {
+                        lblInfo.Text = "Studentu kursam ir jabut no 1 lidz 3!";
+                    }
+                    else
+                    {
+                        stList.Add(new Student(txtVards.Text, txtUzvards.Text, courseIndx));
+                        name.Add(txtVards.Text);
+                        surname.Add(txtUzvards.Text);
+                        course.Add(txtKurss.Text);
+                        lblInfo.Text = "Students veiksmigi pievienots!";
+                        UpdateList();
+                        txtVards.Clear();
+                        txtUzvards.Clear();
+                        txtKurss.Clear();
+                    }
+                }
+                catch
+                {
+                    lblInfo.Text = "Jums pie kursa ir jaievada vesels cipars!";
+                }
             }
         }
 
@@ -79,6 +91,7 @@ namespace Day16_MD
                     lblInfo.Text = "Ievades kluda!";
                 }
             }
+            txtChoice.Clear();
             deleteTimes++;
         }
 
@@ -99,6 +112,10 @@ namespace Day16_MD
                 lblInfo.Text = "Informacija veiksmigi redigeta!";
             }
             UpdateList();
+            txtVards.Clear();
+            txtUzvards.Clear();
+            txtKurss.Clear();
+            txtChoice.Clear();
             editTimes++;
         }
 
@@ -109,8 +126,7 @@ namespace Day16_MD
                 StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Day16\Student.txt");
                 for (int i = 0; i < name.Count; i++)
                 {
-                    //stList.Add(new Student(name[i].ToString(), surname[i] as String, Convert.ToInt32(course[i])));
-                    sw.Write(i + " - " + name[i] + ", " + surname[i] + ", " + course[i] + "\n");
+                    sw.Write(i + "- " + name[i] + ", " + surname[i] + ", " + course[i] + "\n");
                 }
                 sw.Close();
                 lblInfo.Text = "Fails saglabats!";
@@ -161,6 +177,7 @@ namespace Day16_MD
                     lblInfo.Text = "Neviens students nav tada kursa!";
                 }
             }
+            txtKurss.Clear();
             filterTimes++;
         }
 
@@ -174,5 +191,111 @@ namespace Day16_MD
                 i++;
             }
         }
-    }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            if (loadTimes == 0)
+            {
+                LoadFile();
+            }
+            else
+            {
+                lblInfo.Text = "Jus jau saja sesija ieladejat failu. Vai Jus velaties to atkartoti ieladet un parrakstit to pari esosajam sarakstam? (Ievadiet y/n Varda loga)";
+                String choice = txtVards.Text;
+                switch (choice.ToLower())
+                {
+                    case "y":
+                        LoadFile();
+                        break;
+                    case "n":
+                        break;
+                    default:
+                        lblInfo.Text = "Jums bija jaievada simbols y vai n!";
+                        break;
+                }
+            }
+            txtVards.Clear();
+            loadTimes++;
+        }
+        public void LoadFile()
+        {
+
+            if (CheckFile())
+            {
+                StreamReader sr = new StreamReader(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Day16\Student.txt");
+                try
+                {
+                    String line = String.Empty;
+                    name.Clear();
+                    surname.Clear();
+                    course.Clear();
+                    char[] delimiters = { '-', ' ', ',' };
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        String[] lineArr = line.Split(delimiters);
+                        name.Add(lineArr[2]);//ja ir divi delimiteri pec kartas, tad vins izveido empty stringu!!!, tpc indeksi ir tadi..
+                        surname.Add(lineArr[4]);
+                        course.Add(lineArr[6]);
+                    }
+                    lblInfo.Text = "Fails veiksmigi ieladets un saraksts atjaunots!";
+                    UpdateList();
+                    sr.Close();//ja neaiztaisa, tad viena sesija nevar ieladet un tad saglabat!!
+                }
+                catch (Exception ex)
+                {
+                    lblInfo.Text = "Kluda! " + ex.Message;
+                    sr.Close();
+                }
+                sr.Close();
+            }
+        }
+        public bool CheckFile()
+        {
+            StreamReader sr = new StreamReader(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Day16\Student.txt");
+            try
+            {
+                
+                String line = String.Empty;
+                char[] delimiters = { '-', ' ', ',' };
+                while ((line = sr.ReadLine()) != null)
+                {
+                    String[] lineArr = line.Split(delimiters);
+                    bool convertInd = false;
+                    bool courseOk = false;
+                    try
+                    {
+                        convertInd = Int32.TryParse(lineArr[0], out int numberInd);
+                        if(Convert.ToInt32(lineArr[6]) < 1 || Convert.ToInt32(lineArr[6]) > 3)
+                        {
+                            courseOk = true;
+                            return false;
+                        }
+                        if (lineArr.Length == 7 && convertInd && courseOk && lineArr[1] == "" && lineArr[3] == "" && lineArr[5] == "")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            lblInfo.Text = "Faila nav pareizi noformeta informacija!";
+                            return false;
+                        }
+                    }
+                    catch
+                    {
+                        lblInfo.Text = "Linijas pirmajam un pedejam elementam ir jabut cipariem!";
+                    }
+                    
+                }
+                sr.Close();
+                return false;
+            }
+            catch (Exception ex)
+            {
+                lblInfo.Text = "Kluda! " + ex.Message;
+                sr.Close();
+                return false;
+            }
+            sr.Close();
+        }
+    }  
 }
