@@ -79,7 +79,6 @@ namespace Day16_MD
                 {
                     int remove = Convert.ToInt32(txtChoice.Text);
                     listView1.Items.RemoveAt(remove);
-                    //stList.RemoveAt(Convert.ToInt32(txtChoice.Text));
                     lblIndex.Text = "Students veiksmigi izdzests!";
                     name.RemoveAt(remove);
                     surname.RemoveAt(remove);
@@ -105,17 +104,48 @@ namespace Day16_MD
             }
             else
             {
-                int choice = Convert.ToInt32(txtChoice.Text);
-                name[choice] = txtVards.Text;
-                surname[choice] = txtUzvards.Text;
-                course[choice] = txtKurss.Text;
-                lblInfo.Text = "Informacija veiksmigi redigeta!";
+                try
+                {
+                    int choice = Convert.ToInt32(txtChoice.Text);
+
+                    try
+                    {
+                        int jaunKurss = Convert.ToInt32(txtKurss.Text);
+                        if (jaunKurss < 1 || jaunKurss > 3)
+                        {
+                            lblInfo.Text = "Studentu kursam ir jabut no 1 lidz 3!";
+                        }
+                        else
+                        {
+                            if (txtVards.Text.Length < 1 || txtUzvards.Text.Length < 1)
+                            {
+                                lblInfo.Text = "Jums ir jaaizpilda lauki!";
+                            }
+                            else
+                            {
+                                name[choice] = txtVards.Text;
+                                surname[choice] = txtUzvards.Text;
+                                course[choice] = jaunKurss;
+                                lblInfo.Text = "Informacija veiksmigi redigeta!";
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        lblInfo.Text = "Jums kursa lauka bija jaievada vesels cipars no 1 lidz 3!";
+                    }
+                }
+                catch
+                {
+                    lblInfo.Text = "Jums jaunaja lauka bija jaievada pareizais indekss!";
+                }
+                txtVards.Clear();
+                txtUzvards.Clear();
+                txtKurss.Clear();
+                txtChoice.Clear();
             }
             UpdateList();
-            txtVards.Clear();
-            txtUzvards.Clear();
-            txtKurss.Clear();
-            txtChoice.Clear();
+            
             editTimes++;
         }
 
@@ -197,6 +227,7 @@ namespace Day16_MD
             if (loadTimes == 0)
             {
                 LoadFile();
+                listView1.Visible = true;
             }
             else
             {
@@ -206,6 +237,7 @@ namespace Day16_MD
                 {
                     case "y":
                         LoadFile();
+                        listView1.Visible = true;
                         break;
                     case "n":
                         break;
@@ -220,7 +252,7 @@ namespace Day16_MD
         public void LoadFile()
         {
 
-            if (CheckFile())
+            if (CheckFile())//ar to metodi parbaudu vai faila ietverta informacija atbilst noformejumam
             {
                 StreamReader sr = new StreamReader(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Day16\Student.txt");
                 try
@@ -251,43 +283,49 @@ namespace Day16_MD
         }
         public bool CheckFile()
         {
+            bool allOk = true;
             StreamReader sr = new StreamReader(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Day16\Student.txt");
             try
             {
-                
                 String line = String.Empty;
                 char[] delimiters = { '-', ' ', ',' };
                 while ((line = sr.ReadLine()) != null)
                 {
                     String[] lineArr = line.Split(delimiters);
                     bool convertInd = false;
-                    bool courseOk = false;
                     try
                     {
                         convertInd = Int32.TryParse(lineArr[0], out int numberInd);
-                        if(Convert.ToInt32(lineArr[6]) < 1 || Convert.ToInt32(lineArr[6]) > 3)
+                        int courseNum = Convert.ToInt32(lineArr[6]);
+                        if(courseNum >= 1 && courseNum <= 3)
                         {
-                            courseOk = true;
-                            return false;
-                        }
-                        if (lineArr.Length == 7 && convertInd && courseOk && lineArr[1] == "" && lineArr[3] == "" && lineArr[5] == "")
-                        {
-                            return true;
+                            if (lineArr.Length != 7 && !convertInd && lineArr[1] != "" && lineArr[3] != "" && lineArr[5] != "")
+                            {
+                                allOk = false;
+                                lblInfo.Text = "Faila nav pareizi noformeta informacija!";
+                            }
                         }
                         else
                         {
-                            lblInfo.Text = "Faila nav pareizi noformeta informacija!";
-                            return false;
+                            allOk = false;
+                            lblInfo.Text = "Faila informacija netika ieladeta, jo ievaditajam kursam ir jabut no 1 lidz 3!";
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        lblInfo.Text = "Linijas pirmajam un pedejam elementam ir jabut cipariem!";
+                        allOk = false;
+                        lblInfo.Text = "Linijas pirmajam un pedejam elementam ir jabut cipariem!" + ex.Message;
                     }
-                    
                 }
                 sr.Close();
-                return false;
+                if (allOk)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -295,7 +333,6 @@ namespace Day16_MD
                 sr.Close();
                 return false;
             }
-            sr.Close();
         }
     }  
 }
