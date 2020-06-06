@@ -15,14 +15,12 @@ namespace Day16_MD
     public partial class Form1 : Form
     {
         List<Student> stList = new List<Student>();
-        ArrayList name = new ArrayList();
-        ArrayList surname = new ArrayList();
-        ArrayList course = new ArrayList();
 
         int deleteTimes = 0;
         int editTimes = 0;
         int filterTimes = 0;
         int loadTimes = 0;
+        bool isVisible = false;
 
         public Form1()
         {
@@ -48,14 +46,9 @@ namespace Day16_MD
                     else
                     {
                         stList.Add(new Student(txtVards.Text, txtUzvards.Text, courseIndx));
-                        name.Add(txtVards.Text);
-                        surname.Add(txtUzvards.Text);
-                        course.Add(txtKurss.Text);
                         lblInfo.Text = "Students veiksmigi pievienots!";
                         UpdateList();
-                        txtVards.Clear();
-                        txtUzvards.Clear();
-                        txtKurss.Clear();
+                        ClearAllTxt();
                     }
                 }
                 catch
@@ -77,12 +70,11 @@ namespace Day16_MD
             {
                 try
                 {
+                    
                     int remove = Convert.ToInt32(txtChoice.Text);
-                    listView1.Items.RemoveAt(remove);
+                    stList.RemoveAt(remove);
+                    listView2.Items.RemoveAt(remove);
                     lblIndex.Text = "Students veiksmigi izdzests!";
-                    name.RemoveAt(remove);
-                    surname.RemoveAt(remove);
-                    course.RemoveAt(remove);
                     UpdateList();
                 }
                 catch
@@ -123,9 +115,9 @@ namespace Day16_MD
                             }
                             else
                             {
-                                name[choice] = txtVards.Text;
-                                surname[choice] = txtUzvards.Text;
-                                course[choice] = jaunKurss;
+                                stList[choice].setName(txtVards.Text);//nevis ar =, bet iekavas vajadzēja un ierakstit jauno vertibu
+                                stList[choice].setSurname(txtUzvards.Text);
+                                stList[choice].setCourse(jaunKurss);
                                 lblInfo.Text = "Informacija veiksmigi redigeta!";
                             }
                         }
@@ -139,13 +131,9 @@ namespace Day16_MD
                 {
                     lblInfo.Text = "Jums jaunaja lauka bija jaievada pareizais indekss!";
                 }
-                txtVards.Clear();
-                txtUzvards.Clear();
-                txtKurss.Clear();
-                txtChoice.Clear();
+                ClearAllTxt();
             }
             UpdateList();
-            
             editTimes++;
         }
 
@@ -154,10 +142,12 @@ namespace Day16_MD
             try
             {
                 StreamWriter sw = new StreamWriter(@"C:\Users\akots\Desktop\Programmesana_StreamReadWrite\Day16\Student.txt");
-                for (int i = 0; i < name.Count; i++)
+
+                foreach(Student st in stList)
                 {
-                    sw.Write(i + "- " + name[i] + ", " + surname[i] + ", " + course[i] + "\n");
+                    sw.WriteLine($"{st.getName()},{st.getSurname()},{st.getCourse()}");
                 }
+                
                 sw.Close();
                 lblInfo.Text = "Fails saglabats!";
             }
@@ -169,56 +159,68 @@ namespace Day16_MD
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            listView1.Visible = true;
-            btnClose.Visible = true;
-            UpdateList();
+            if (isVisible)
+            {
+                listView1.Visible = false;
+                btnShow.Text = "Show list";
+                isVisible = false;
+            }
+            else
+            {
+                listView1.Visible = true;
+                btnShow.Text = "Close list";
+                isVisible = true;
+                UpdateList();
+            }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            listView1.Visible = false;
-            btnClose.Visible = false;
-        }
-
         private void btnFilter_Click(object sender, EventArgs e)
         {
             int i = 0;
-            if(filterTimes == 0)
+            if (filterTimes == 0)
             {
                 lblInfo.Text = "Ievadiet Kursa lauka pec kura kursa Jus velaties filtret sarakstu un spiediet Filter!";
             }
             else
             {
-                listView1.Items.Clear();
-                if (course.Contains(txtKurss.Text))
+                listView2.Items.Clear();
+                int y = 0;
+                foreach (var student in stList)
                 {
-                    foreach(String c in course)
+
+                    try
                     {
-                        if(c == txtKurss.Text)
+                        int course = Convert.ToInt32(txtKurss.Text);
+                        if (student.getCourse().Equals(course))
                         {
-                            listView1.Items.Add(new ListViewItem(new[] { i.ToString(), name[i].ToString(), surname[i].ToString(), course[i].ToString() }));
+                            String name = student.getName();
+                            String surname = student.getSurname();
+                            int cours = student.getCourse();
+                            listView2.Items.Add($"{i} {name} {surname} {cours}");
                         }
-                        i++;
+                        else
+                        {
+                            lblInfo.Text = "Neviens students nav tada kursa!";
+                        }
                     }
-                    lblInfo.Text = "Filtresana veiksmiga, saraksts atjaunots!";
-                }
-                else
-                {
-                    lblInfo.Text = "Neviens students nav tada kursa!";
+                    catch
+                    {
+                        lblInfo.Text = "Jums kursa lauka bija jaievada cipars!";
+                    }
+                    y++;
                 }
             }
             txtKurss.Clear();
             filterTimes++;
-        }
+        }    
+    
 
         private void UpdateList()
         {
-            listView1.Items.Clear();
-            int i = 0;
-            foreach (var a in name)
+            listView2.Items.Clear();
+            int y = 0;
+            foreach(var st in stList)
             {
-                listView1.Items.Add(new ListViewItem(new[] { i.ToString(), name[i].ToString(), surname[i].ToString(), course[i].ToString() }));
-                i++;
+                listView2.Items.Add($"{y} {st.getName()} {st.getSurname()} {st.getCourse()}");
             }
         }
 
@@ -258,20 +260,19 @@ namespace Day16_MD
                 try
                 {
                     String line = String.Empty;
-                    name.Clear();
-                    surname.Clear();
-                    course.Clear();
-                    char[] delimiters = { '-', ' ', ',' };
+                    stList.Clear();
                     while ((line = sr.ReadLine()) != null)
                     {
-                        String[] lineArr = line.Split(delimiters);
-                        name.Add(lineArr[2]);//ja ir divi delimiteri pec kartas, tad vins izveido empty stringu!!!, tpc indeksi ir tadi..
-                        surname.Add(lineArr[4]);
-                        course.Add(lineArr[6]);
+                        String[] lineArr = line.Split(',');
+                        String name = lineArr[0];
+                        String surname = lineArr[1];
+                        int course = Convert.ToInt32(lineArr[2]);
+                        Student st = new Student(name, surname, course);
+                        stList.Add(st);
                     }
                     lblInfo.Text = "Fails veiksmigi ieladets un saraksts atjaunots!";
                     UpdateList();
-                    sr.Close();//ja neaiztaisa, tad viena sesija nevar ieladet un tad saglabat!!
+                    sr.Close();
                 }
                 catch (Exception ex)
                 {
@@ -288,18 +289,15 @@ namespace Day16_MD
             try
             {
                 String line = String.Empty;
-                char[] delimiters = { '-', ' ', ',' };
                 while ((line = sr.ReadLine()) != null)
                 {
-                    String[] lineArr = line.Split(delimiters);
-                    bool convertInd = false;
+                    String[] lineArr = line.Split(',');
                     try
                     {
-                        convertInd = Int32.TryParse(lineArr[0], out int numberInd);
-                        int courseNum = Convert.ToInt32(lineArr[6]);
+                        int courseNum = Convert.ToInt32(lineArr[2]);
                         if(courseNum >= 1 && courseNum <= 3)
                         {
-                            if (lineArr.Length != 7 && !convertInd && lineArr[1] != "" && lineArr[3] != "" && lineArr[5] != "")
+                            if (lineArr.Length != 3)
                             {
                                 allOk = false;
                                 lblInfo.Text = "Faila nav pareizi noformeta informacija!";
@@ -333,6 +331,13 @@ namespace Day16_MD
                 sr.Close();
                 return false;
             }
+        }
+        public void ClearAllTxt()
+        {
+            txtVards.Clear();
+            txtUzvards.Clear();
+            txtKurss.Clear();
+            txtChoice.Clear();
         }
     }  
 }

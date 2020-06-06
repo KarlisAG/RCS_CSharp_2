@@ -41,15 +41,19 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.txtChoice = new System.Windows.Forms.TextBox();
-            this.lblIndex = new System.Windows.Forms.Label();
+            this.Indekss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Vards = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Uzvards = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Kurss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Indekss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtChoice = new System.Windows.Forms.TextBox();
+            this.lblIndex = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.Index = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Course = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lblVards
@@ -176,16 +180,23 @@
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.Visible = false;
             // 
-            // btnClose
+            // Indekss
             // 
-            this.btnClose.Location = new System.Drawing.Point(208, 233);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(104, 23);
-            this.btnClose.TabIndex = 13;
-            this.btnClose.Text = "Close list";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Visible = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.Indekss.Text = "Indekss";
+            // 
+            // Vards
+            // 
+            this.Vards.Text = "Vards";
+            this.Vards.Width = 84;
+            // 
+            // Uzvards
+            // 
+            this.Uzvards.Text = "Uzvards";
+            this.Uzvards.Width = 88;
+            // 
+            // Kurss
+            // 
+            this.Kurss.Text = "Kurss";
             // 
             // txtChoice
             // 
@@ -204,24 +215,6 @@
             this.lblIndex.TabIndex = 15;
             this.lblIndex.Text = "Ievadiet indeksu";
             this.lblIndex.Visible = false;
-            // 
-            // Vards
-            // 
-            this.Vards.Text = "Vards";
-            this.Vards.Width = 84;
-            // 
-            // Uzvards
-            // 
-            this.Uzvards.Text = "Uzvards";
-            this.Uzvards.Width = 88;
-            // 
-            // Kurss
-            // 
-            this.Kurss.Text = "Kurss";
-            // 
-            // Indekss
-            // 
-            this.Indekss.Text = "Indekss";
             // 
             // btnFilter
             // 
@@ -243,16 +236,47 @@
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Index,
+            this.Name,
+            this.Surname,
+            this.Course});
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(804, 231);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(362, 263);
+            this.listView2.TabIndex = 18;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // Index
+            // 
+            this.Index.Text = "Index";
+            // 
+            // Name
+            // 
+            this.Name.Text = "Name";
+            // 
+            // Surname
+            // 
+            this.Surname.Text = "Surname";
+            // 
+            // Course
+            // 
+            this.Course.Text = "Course";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1211, 536);
+            this.Controls.Add(this.listView2);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.txtChoice);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnSave);
@@ -287,7 +311,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnShow;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox txtChoice;
         private System.Windows.Forms.Label lblIndex;
         private System.Windows.Forms.ColumnHeader Indekss;
@@ -297,6 +320,11 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader Index;
+        private System.Windows.Forms.ColumnHeader Name;
+        private System.Windows.Forms.ColumnHeader Surname;
+        private System.Windows.Forms.ColumnHeader Course;
     }
 }
 
