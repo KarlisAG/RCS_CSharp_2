@@ -17,9 +17,10 @@ namespace Day18_MD
             String response = client.DownloadString(url);
 
             Console.WriteLine(response);
-            
-            TempData lst = JsonConvert.DeserializeObject<TempData>(response);
-            foreach (Student s in lst.st)
+            List<Student> sts = JsonConvert.DeserializeObject<List<Student>>(response);
+            //List<Student> stList = (List<Student>)JsonConvert.DeserializeObject(response);
+            //TempData lst = JsonConvert.DeserializeObject<TempData>(response);
+            foreach (Student s in sts)
             {
                 Console.WriteLine(s.name + " " + s.surname + " " + s.course);
             }
