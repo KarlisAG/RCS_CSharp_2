@@ -2,9 +2,11 @@ USE students;
 
 CREATE TABLE student
 (
+studentID INT NOT NULL AUTO_INCREMENT,
 studentName varchar (20) NOT NULL, 
 studentSurname varchar(20) NOT NULL,
-studentCourse INT NOT NULL
+studentCourse INT NOT NULL,
+primary key (studentID)
 );
 
 DROP TABLE student;
@@ -20,10 +22,10 @@ VALUES ("Juris", "Berzins", 2),
 
 SELECT * FROM student;
 
-SELECT studentName, studentSurname, studentCourse
+SELECT studentID, studentName, studentSurname, studentCourse
 FROM student
 WHERE studentName = "Janis";
 
-SELECT studentName
+SELECT studentName, studentID
 FROM student
-WHERE NOT studentCourse = 3;
+WHERE studentCourse = 1 OR studentCourse = 2;
