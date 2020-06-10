@@ -6,12 +6,12 @@ namespace Day18_MD
 {
     class TempData
     {
-        public String status;
-        public List<Student> st;
+        
+        public List<Student> st = new List<Student>();
 
-        public TempData(String status)
+        public TempData()
         {
-            this.status = status;
+            
         }
     }
 }
