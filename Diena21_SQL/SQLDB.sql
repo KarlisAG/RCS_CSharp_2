@@ -19,7 +19,7 @@ VALUES ("Juris", "Berzins"),
 ("Anete", "Cauna");
 
 INSERT INTO employees(employeeName, employeeLastName)
-VALUES("Karls", "Markss"),
+VALUES("Karl", "Markss"),
 ("Maris", "Pagals");
 
 SELECT employeeName, employeeLastName 
