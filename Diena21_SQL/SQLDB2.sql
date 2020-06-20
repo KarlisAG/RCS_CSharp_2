@@ -32,11 +32,22 @@ minSalary INT NOT NULL,
 maxSalary INT NOT NULL
 );
 
+SELECT * FROM jobs;
 
 INSERT INTO jobs (jobTitle, minSalary, maxSalary)
 VALUES ("Software Engineer", 1000, 4000),
 	   ("Marketing specialist,", 800, 3000),
        ("Project manager", 1500, 4500);
+       
+SELECT minSalary, maxSalary
+FROM employees
+INNER JOIN jobs
+ON jobs.jobId = employees.jobId
+WHERE jobs.jobId = 1;
+
+SELECT minSalary, maxSalary
+FROM jobs
+WHERE jobsId = 1;
        
 ALTER TABLE employees
 ADD salary INT NOT NULL;

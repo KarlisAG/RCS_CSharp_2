@@ -13,14 +13,10 @@ DROP TABLE employees;
 ALTER TABLE employees
 MODIFY COLUMN employeeId INT PRIMARY KEY AUTO_INCREMENT; 
 
-
-INSERT INTO employees ( employeeName, employeeLastName)
-VALUES ("Juris", "Berzins"),
-("Anete", "Cauna");
-
-INSERT INTO employees(employeeName, employeeLastName)
-VALUES("Karl", "Markss"),
-("Maris", "Pagals");
+INSERT INTO employees(employeeName, employeeLastName, departmentID, salary, jobID)
+VALUES("Karl", "Markss", 1, 2000, 1),
+("Maris", "Pagals", 2, 1500, 2),
+("Anete", "Cauna", 3, 2500, 3);
 
 SELECT employeeName, employeeLastName 
 FROM employees
