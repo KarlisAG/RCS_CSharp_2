@@ -16,7 +16,6 @@ ADD departmentId INT NOT NULL;
 ALTER TABLE employees
 ADD FOREIGN KEY (departmentId) REFERENCES departments(departmentId);
 
-
 SELECT * FROM employees;
 
 SELECT employees.employeeName, employees.employeeLastName, departments.departmentName
@@ -63,5 +62,3 @@ ON jobs.jobId = employees.jobId
 INNER JOIN departments
 ON departments.departmentId = employees.employeeId
 WHERE departments.departmentId = 1;
-
-employeesDROP TABLE jobs;

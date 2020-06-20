@@ -1,4 +1,4 @@
-USE ofiss;
+USE ofice;
 
 CREATE TABLE employees
 ( 
